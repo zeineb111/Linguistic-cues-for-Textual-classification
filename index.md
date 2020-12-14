@@ -23,6 +23,7 @@ The season entry is a dictionnary with 3 entries:
 * **season**: a year that gives you a notion of order within the seasons
 * **iteraction**: a dictionnary that indicates what actions did the betrayer and victim do to each other respectively. Actions available could be either attack, support or None.
 * **messages**: contains all the features that the authors of the "Linguistic harbringers of betrayal" rely on to analyze the messages.  
+  
 The features are the following: 
 * **sentiment**: it contains the values for the positive, negative and neutral sentiments
 * **lexicon_words**: contains multpiple entries:  
@@ -49,7 +50,7 @@ This dataset contains two sets, a set of real news and another one of fake news.
 * **text**: The actual text of the news article. 
 * **title**: The title of the article.
 * **subject**: Every article is classified in a type of subject either 'Government News' or 'Middle-east' or 'News' or 'US_News' or 'left-news' or 'politics' or 'politicsNews' or 'worldnews'.
-***date**: date of publication of the article.
+*  **date**: date of publication of the article.
 
 
 ## Preprocessing 
@@ -82,7 +83,7 @@ There are more positive and negative news (considering overall sentiment of the 
 ### Politeness  
 
 To compute the politeness of each news, we used the politeness library which is a port of the Stanford Politeness API that was used by the authors. The politeness classifier takes as input a sentence and it's parses and returns the politeness of that sentence. The politeness of a news is computed as the average of it's sentences politenesses. To compute the parses, we first relied on the annotate method of the Stanford coreNLP that is computed while computing the sentiments, but as we were forced to stop this method at a certain point we had to switch to another method to compute the remaining parses. For this we used TextBlob library.  
-We show here the average politeness for the Fake vs True news.
+We show here the average politeness for the Fake vs True news:
 
 ![](politeness.png)
 
@@ -90,15 +91,34 @@ The average politeness of the Fake and True news are very close. We performed a 
 
 ### Talkativeness 
 We computed the talkativeness of each news, which consists on the number of sentences and the number of words per news. Here also we started with the CoreNLP annotate method then switched to other methods form the NLTK library. 
+We show here the average talkativeness for the Fake vs True news:
 
 ![](talkativeness.png)
 
 There is a significant diffrence in the average number of words between the two sets, with the Fake news have a higher value on average. However, for the number of sentences, we can see from the plot that the average values are very close. We performed a statistical test on the number of sentences and found that the diffrence in the number of sentences is not significant.
 
-### Subjectivity
+
+
+
 
 ### Discourse connectors
-We weren't able to reproduce the same work done by the authors to extract the discourse connectors due to the lack of information. Thus we made our researches on the internet to either find predefined methods that do the task or collect the different markers for the feature and compute the number of their occurrences in the news
+We weren't able to reproduce the same work done by the authors to extract the discourse connectors due to the lack of information. Thus we made our researches on the internet to either find predefined methods that do the task or collect the different markers for the feature and compute the number of their occurrences in the news.
+* **Subjectivity**  
+for  the  subjectivity  we  used a predefined method from TextBlob library that computes it for a given text. It returns a float in the range [0.0,  1.0]  where  0.0  is  very  objective  and  1.0  is  very subjective.
+we show here the results we got for the average subjectivity for the Fake and Real news:
+
+![](subjectivity.png)
+
+The Fake news are on avergae more subejctive than the True news.
+
+* **Expansion, contingency and comparison**
+For these features, no predefined method was found. Thus we collected markers from the internet for each of them and combined them with the features that we extracted from the diplomacy dataset, to get the complete set of markers.
+we show here the results we got for the average values of the expansion, contingency and comparison features for the Fake and Real news:
+
+![](discourse_markers.png)
+
+On avergae Fake news contain more expansion, contingency and comparaison discourse connectors than the True news. This shows that True news are less eloquant than Fake news.
+
 ## Models 
 (nizar)
 ## Conclusion
