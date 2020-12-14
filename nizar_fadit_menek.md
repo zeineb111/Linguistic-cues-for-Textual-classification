@@ -27,15 +27,15 @@ The season entry is a dictionnary with 3 entries:
 The features are the following: 
 * **sentiment**: it contains the values for the positive, negative and neutral sentiments
 * **lexicon_words**: contains multpiple entries:
-&emsp;* *allsubj*: words to compute the subjectivity feature  
-&emsp;* *premise*: words to compute the premise feature  
-&emsp;* *claim*: words to compute the claim feature  
-&emsp;* *disc_expansion*: words to compute the expansion feature  
-&emsp;* *disc_comparison*: words to compute the comparison feature  
-&emsp;* *disc_temporal_future*: words to compute the planning feature  
-&emsp;* *disc_temporal_rest*: word to compute the temporal feature  
-&emsp;* *disc_contingency*: word to compute the temporal feature  
-&emsp;* *n_requests*: contains the number of requests  
+&emsp; *allsubj*: words to compute the subjectivity feature  
+&emsp; *premise*: words to compute the premise feature  
+&emsp; *claim*: words to compute the claim feature  
+&emsp; *disc_expansion*: words to compute the expansion feature  
+&emsp; *disc_comparison*: words to compute the comparison feature  
+&emsp; *disc_temporal_future*: words to compute the planning feature  
+&emsp; *disc_temporal_rest*: word to compute the temporal feature  
+&emsp; *disc_contingency*: word to compute the temporal feature  
+&emsp; *n_requests*: contains the number of requests  
 * **frequent_words**: the frequent words
 * **n_word**': contains the number of words
 * **politeness**: containss the politeness of the message
@@ -67,6 +67,7 @@ The news that we got contain tags and links... that are irrelevant
 **Discourse connectors**
 
 ## Models 
+We have implemented a total of 4 models to be 
 
 ## Conclusion
 
