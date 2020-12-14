@@ -1,4 +1,4 @@
-## Linguistic cues for binary classification 
+## Linguistic cues for Textual classification 
 
 You can use the [editor on GitHub](https://github.com/zeineb111/data_story_WAP/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
