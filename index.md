@@ -111,13 +111,22 @@ we show here the results we got for the average subjectivity for the Fake and Re
 
 The Fake news are on avergae more subejctive than the True news.
 
+
 * **Expansion, contingency and comparison**  
 For these features, no predefined method was found. Thus we collected markers from the internet for each of them and combined them with the features that we extracted from the diplomacy dataset, to get the complete set of markers.
 we show here the results we got for the average values of the expansion, contingency and comparison features for the Fake and Real news:
 
 ![](discourse_markers.png)
 
-On avergae Fake news contain more expansion, contingency and comparaison discourse connectors than the True news. This shows that True news are less eloquant than Fake news.
+On avergae Fake news contain more expansion, contingency and comparaison discourse connectors than the True news. This shows that True news are less eloquant than Fake news.  
+
+* **Premises and conclusions**  
+There was no predefined method for this feature as weel. We collected the markers from the internet and combined them with the features that we extracted from the diplomacy dataset, to get the complete set of markers.  
+
+![](premises_conclusions.png)
+
+the average number of premises and conclusions for the Fake and True sets are close. We performd a statistical test and found that there is no significant difference.
+
 
 ## Models 
 (nizar)
