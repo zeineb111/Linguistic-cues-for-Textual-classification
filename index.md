@@ -10,12 +10,47 @@ The authors worked on the diplomacy game, which is a war-themed strategy game wh
 to exploit subtle linguistic signals that surface in the conversation. They  also analysed how these features evolve as we get closer to betrayal to detect imbalances and check how effective are the features at detecting long-term betrayals.
 
 ## Data collection 
-(nizar do this!)
-As we described in the Introduction, our project consists on two part each of them working on a diffrent dataset.  
-The first dataset is the Dilomacy game dataset that was provided with the paper. It conatins 500 games, each game contains multiple seasons
+As we described in the Introduction, our project consists on two part each of them working on a diffrent dataset. 
 
+### Diplomcay dataset
+The first dataset is the Diplomacy game dataset that was provided with the paper. It conatins 500 games, each game is a dictionnary with 5 entries:
+* **seasons**: a list of the game seasons
+* **game**: unique identifier of the game it comes from
+* **betrayal**: a boolean indicating if the relationship ended in betrayal or not
+* **idx**: unique identifier of the dataset entry
+* **people**: the countries played by the players
+The season entry is a dictionnary with 3 entries:
+* **season**: a year that gives you a notion of order within the seasons
+* **iteraction**: a dictionnary that indicates what actions did the betrayer and victim do to each other respectively. Actions available could be either attack, support or None.
+* **messages**: contains all the features that the authors of the "Linguistic harbringers of betrayal" rely on to analyze the messages.
+The features are the following: 
+* **sentiment**: it contains the values for the positive, negative and neutral sentiments
+* **lexicon_words**: contains multpiple entries:
+&emsp; *allsubj*: words to compute the subjectivity feature  
+&emsp; *premise*: words to compute the premise feature  
+&emsp; *claim*: words to compute the claim feature  
+&emsp; *disc_expansion*: words to compute the expansion feature  
+&emsp; *disc_comparison*: words to compute the comparison feature  
+&emsp; *disc_temporal_future*: words to compute the planning feature  
+&emsp; *disc_temporal_rest*: word to compute the temporal feature  
+&emsp; *disc_contingency*: word to compute the temporal feature  
+&emsp; *n_requests*: contains the number of requests  
+* **frequent_words**: the frequent words
+* **n_word**': contains the number of words
+* **politeness**: containss the politeness of the message
+* **n_sentences**: contains the number of sentences
 
-The second dataset is the Fake and real news dataset (https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset). This dataset contains two sets, a set of Real new
+According to paper, the talkativeness is quantified with the number of messages sent, the average number of sentences per message, and the average number of words 
+per sentence.
+
+### Real and fake news dataset 
+The second dataset is the Fake and real news dataset (https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset).
+This dataset contains two sets, a set of real news and another one of fake news. Both sets contain the same features, which are: 
+* **text**: The actual text of the news article. 
+* **title**: The title of the article.
+* **subject**: Every article is classified in a type of subject either 'Government News' or 'Middle-east' or 'News' or 'US_News' or 'left-news' or 'politics' or 'politicsNews' or 'worldnews'.
+***date**: date of publication of the article.
+
 
 ## Preprocessing 
 The  news datasets  requires  some  preprecessing  before  the analysis.  In  fact,  the  news  contain  a  lot  of  links,  tags  ...that are useless for the linguistic cues analysis thus we delete them.  We  also  map  all  the  news  to  lower  case  letters  to avoid miss-leading the models. We also perform some specific modifications  to  remove  empty  strings,  multiple  spaces...  to ensure  that  we  have  proper  entries  both  for  the  analysis  and the models.
