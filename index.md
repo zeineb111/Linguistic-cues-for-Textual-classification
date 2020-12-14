@@ -1,12 +1,18 @@
-## Welcome to GitHub Pages
+## Linguistic cues for binary classification 
 
 You can use the [editor on GitHub](https://github.com/zeineb111/data_story_WAP/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Introduction
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Under the scope of EPFL's ADA class project, we will perform a creative extension on the paper Linguistic  Harbingers  of  Betrayal. In this project we will work on the subject of Natural Language Processing (NLP) and more specially on sentiment analysis. As we will present to you in the next section, the authors of the paper worked on the messages of the diplomacy game and extracted some features to do some analysis and then to train a simple model perform a complex task, even for humans, which is detecting betrayal. To extend this work we will first try to train more complex and adapted models for this kind of tasks, like RNNs (see section 5) and see how they perform and draw some conclusions from their results. Then we will extend this work to another and completely different dataset, a dataset of tweets, to try to see if the same features can be used for various NLP examples.
+
+### Related Work 
+
+### Data collection 
+
+
 
 ```markdown
 Syntax highlighted code block
