@@ -111,7 +111,7 @@ we show here the results we got for the average subjectivity for the Fake and Re
 
 The Fake news are on avergae more subejctive than the True news.
 
-* **Expansion, contingency and comparison**
+* **Expansion, contingency and comparison**  
 For these features, no predefined method was found. Thus we collected markers from the internet for each of them and combined them with the features that we extracted from the diplomacy dataset, to get the complete set of markers.
 we show here the results we got for the average values of the expansion, contingency and comparison features for the Fake and Real news:
 
