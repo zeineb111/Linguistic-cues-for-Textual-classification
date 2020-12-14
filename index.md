@@ -10,7 +10,26 @@ Under the scope of EPFL's ADA class project, we will perform a creative extensio
 
 ### Related Work 
 
+Since our work consists on a creative extension for the Linguistic Harbingers of Betrayal paper, we will describe briefly the work done by the authors to put you in the contest. The authors worked on the diplomacy game, which is a war-themed strategy
+game where friendships and betrayals are orchestrated primarily through language. They collected a dataset, that contains 500 games half of them for games that end with an attack and the other half for games without attacks.Each game contains multiple seasons, and in each season the players communicate via messages then perform and action simultaneously. The two sets are matched to get the most accurate results. They consider an attacker the first player that breaks the friendship. For games without an attack, the attacker is chosen randomly from the two players. They performed some preprocessing to extract the following features from the messages: sentiments (negative, positive, neutral), politeness, talkativeness, discourse markers (planning, comparison, expansion, contingency, subjectivity, premises, claims). After extracting these features, they generated some plots to see and compare the behaviours of those between the two types of players. After some analysis, they fed these features to a Logistic regression model that achieved an accuracy of 57{\%} at detecting betrayals. They concluded that the classifier is able
+to exploit subtle linguistic signals that surface in the conversation. They  also analysed how these features evolve as we get closer to betrayal to detect imbalances.
+
 ### Data collection 
+
+### Preprocessing 
+
+### Extracting features
+**Sentiments**
+
+**Politeness**
+
+**Talkativeness**
+
+**Discourse connectors**
+
+### Models 
+
+### Conclusion
 
 
 
