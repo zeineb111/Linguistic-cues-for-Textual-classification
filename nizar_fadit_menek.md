@@ -27,15 +27,15 @@ The season entry is a dictionnary with 3 entries:
 The features are the following: 
 * **sentiment**: it contains the values for the positive, negative and neutral sentiments
 * **lexicon_words**: contains multpiple entries:
-  +'allsubj': words to compute the subjectivity feature
-  +'premise': words to compute the premise feature
-  +'claim': words to compute the claim feature
-  +'disc_expansion': words to compute the expansion feature
-  +'disc_comparison': words to compute the comparison feature
-  +'disc_temporal_future': words to compute the planning feature
-  +'disc_temporal_rest': word to compute the temporal feature
-  +'disc_contingency': word to compute the temporal feature
-  +'n_requests': contains the number of requests
+  * 'allsubj': words to compute the subjectivity feature
+  * 'premise': words to compute the premise feature
+  * 'claim': words to compute the claim feature
+  * 'disc_expansion': words to compute the expansion feature
+  * 'disc_comparison': words to compute the comparison feature
+  * 'disc_temporal_future': words to compute the planning feature
+  * 'disc_temporal_rest': word to compute the temporal feature
+  * 'disc_contingency': word to compute the temporal feature
+  * 'n_requests': contains the number of requests
 * **frequent_words**: the frequent words
 * **n_word**': contains the number of words
 * **politeness**: containss the politeness of the message
