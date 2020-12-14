@@ -18,7 +18,10 @@ The first dataset is the Dilomacy game dataset that was provided with the paper.
 The second dataset is the Fake and real news dataset (https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset). This dataset contains two sets, a set of Real new
 
 ## Preprocessing 
-The news that we got contain tags and links... that are irrelevant 
+The  news datasets  requires  some  preprecessing  before  the analysis.  In  fact,  the  news  contain  a  lot  of  links,  tags  ...that are useless for the linguistic cues analysis thus we delete them.  We  also  map  all  the  tweets  to  lower  case  letters  to avoid miss-leading the models. We also perform some specific modifications  to  remove  empty  strings,  multiple  spaces...  to ensure  that  we  have  proper  entries  both  for  the  analysis  and the models.
+
+The True news have company's name(Reuters) and locaion of news in the beginning, we remove those to avoid havng bias.
+
 
 ## Extracting features
 **Sentiments**
