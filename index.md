@@ -144,10 +144,10 @@ We build a model with:
 * 1 neurone for the last layer that is going to provide the output  
 * We add early stopping and l2 regularization to avoid overfitting    
 
-The model achived an Accuracy of **0.826** on the test set.  
+The model achived an Accuracy of **0.826** on the test set.    
 We present here the precison_recall curve of our model: 
 
-![](precison_recall_news_features.png)
+![](precsion_recall_news_features.png)
 
 ## Models 
 (nizar)
