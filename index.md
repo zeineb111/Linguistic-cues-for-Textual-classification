@@ -142,7 +142,7 @@ We build a model with:
 * 256 neurones for the first hidden layer  
 * 64 neurones for the second hidden layer  
 * 1 neurone for the last layer that is going to provide the output  
-* We add early stopping and l2 regularization to avoid overfitting    
+* We add early stopping and L2 regularization to avoid overfitting    
 
 The model achived an Accuracy of **0.826** on the test set.    
 
