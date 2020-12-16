@@ -52,7 +52,14 @@ This dataset contains two sets, a set of real news and another one of fake news.
 * **subject**: Every article is classified in a type of subject either 'Government News' or 'Middle-east' or 'News' or 'US_News' or 'left-news' or 'politics' or 'politicsNews' or 'worldnews'.
 *  **date**: date of publication of the article.
 
+# Diplomacy Game:
+The first part of our project consists on running an RNN model on the features extracted by the authors and test it's performance.
 
+
+Now that we are done with the Diplomacy game dataset we will move to our new dataset to explore the effect of the linguistic cues oin detecting True and Fake news.  
+
+# True and Fake news:
+In this second part of our project we will deal with the True and Fake news dataset, we present to you here the diffrent steps that we performed.  
 ## Preprocessing 
 The  news datasets  requires  some  preprecessing  before  the analysis.  In  fact,  the  news  contain  a  lot  of  links,  tags  ...that are useless for the linguistic cues analysis thus we delete them.  We  also  map  all  the  news  to  lower  case  letters  to avoid miss-leading the models. We also perform some specific modifications  to  remove  empty  strings,  multiple  spaces...  to ensure  that  we  have  proper  entries  both  for  the  analysis  and the models.
 
