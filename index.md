@@ -134,6 +134,20 @@ There was no predefined method for this feature as weel. We collected the marker
 
 the average number of premises and conclusions for the Fake and True sets are close. We performd a statistical test and found that there is no significant difference.
 
+## Classification with MLP (Multi-Layer Perceptron)
+After extracting and analysing these features, we built a MLP model that classifies the Fake and True news using them. We only retain the features that have been computed for all the dataset and that have been used by the author for homogenity to train our model. We thus used only the following features: nb_sentences,	nb_words,	politeness	premises_conclusions,	subjectivity,	polarity,	comparaison,	contingency	and expansion. To train the model we gave labels to distinguish the two datasets, 1 for the True news and zero for the Fake news. We normalized the data with the z_score scaling and we split it randomly into 80% of train set and 20% of test set.  
+**Model architecture:**  
+We build a model with:  
+* 16 neurones as input layer   
+* 256 neurones for the first hidden layer  
+* 64 neurones for the second hidden layer  
+* 1 neurone for the last layer that is going to provide the output  
+* We add early stopping and l2 regularization to avoid overfitting    
+
+The model achived an Accuracy of **0.826** on the test set.  
+We present here the precison_recall curve of our model: 
+
+![](precison_recall_news_features.png)
 
 ## Models 
 (nizar)
