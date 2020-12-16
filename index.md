@@ -156,6 +156,13 @@ As we can see the model performs pretty well with those features.
 
 To extend our research even more, we will now train new models on the 'text' of the two datasets and compare their performance with the one we just got to see how good these features are at classfying news
 
+## Visualization
+We started by visualizing some properties of the text of our dataset to get some insights.
+
+Here we see the wordclouds that we generated for the Fake and True news respectively:
+
+![](wordcloud_Fake.png)    ![](wordcloud_True.png)
+
 ## Models 
 (nizar)
 ## Conclusion
