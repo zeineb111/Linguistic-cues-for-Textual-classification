@@ -153,6 +153,7 @@ We present here the precison_recall curve of our model:
 (houni nizdou explication mtaa el plot)
 
 As we can see the model performs pretty well with those features.  
+
 To extend our research even more, we will now train new models on the 'text' of the two datasets and compare their performance with the one we just got to see how good these features are at classfying news
 
 ## Models 
