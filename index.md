@@ -161,7 +161,7 @@ We started by visualizing some properties of the text of our dataset to get some
 
 Here we see the wordclouds that we generated for the Fake and True news respectively:
 
-![](wordcloud_Fake.png)    ![](wordcloud_True.png)
+![](wordcloud_Fake.png =50x)    ![](wordcloud_True.png =50x)
 
 ## Models 
 (nizar)
