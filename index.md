@@ -161,6 +161,7 @@ We started by visualizing some properties of the text of our dataset to get some
 
 Here we see the wordclouds that we generated for the Fake and True news respectively:
 
+<img src="wordcloud_Fake.png" width="100" height="100">
 ![](wordcloud_Fake.png){ width=50% }    ![](wordcloud_True.png ){ width=50% }
 
 ## Models 
