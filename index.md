@@ -161,7 +161,7 @@ We started by visualizing some properties of the text of our dataset to get some
 
 Here we see the wordclouds that we generated for the Fake and True news respectively:
 
-<img src="wordcloud_Fake.png" width="500" height="400">           <img src="wordcloud_True.png" width="500" height="400">
+<img src="Fake_wordcloud.png" width="500" height="400">                      <img src="wordcloud_True.png" width="500" height="400">
 
 ## Models 
 (nizar)
