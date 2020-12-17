@@ -163,6 +163,19 @@ Here we see the wordclouds that we generated for the Fake and True news respecti
 
 <img src="Fake_wordcloud.png" width="500" height="400">                      <img src="wordcloud_True.png" width="500" height="400">
 
+
+## Classification with MLP (Multi-Layer Perceptron)
+We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data.  We split the data randomly into 75% of train set and 25% of test set. The model gave an Accuracy of **0.985**, which is a very good result.
+
+
+
+
+
+<img src="Subjectivity_Fake.png" >                      <img src="Subjectivity_True.png" >
+
+
+![alt](Subjectivity_Fake.png) | ![alt](Subjectivity_True.png)
+
 ## Models 
 (nizar)
 ## Conclusion
