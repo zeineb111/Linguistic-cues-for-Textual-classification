@@ -169,12 +169,7 @@ We built a MLP model to training on the Fake and True texts. Before training, we
 
 
 
-
-
-
-
-
-![](Subjectivity_Fake.png) | ![](Subjectivity_True.png)
+<img src="Subjectivity_Fake.png" >                      <img src="Subjectivity_True.png" >
 
 ## Models 
 (nizar)
