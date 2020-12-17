@@ -219,7 +219,8 @@ We build a model with:
 
 The model gave an Accuracy of **0.985**, on the test set. 
 
-We present here the precison_recall curve of our model: 
+We present here the precison_recall curve of our model:    
+
 ![](MLP_news_curve.png)
 
 Here we analyze how the MLP classifies the news.  
