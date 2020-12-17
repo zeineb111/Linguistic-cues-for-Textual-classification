@@ -194,8 +194,8 @@ Here we see the wordclouds that we generated for the Fake and True news respecti
 <img src="Fake_wordcloud.png" width="350" height="400">       <img src="wordcloud_True.png" width="350" height="400">
 
 
-<img src="words_MLP_Fake.png.png" >                      
-<img src="words_MLP_True.png.png" >
+<img src="words_MLP_false.png.png" >                      
+<img src="words_MLP_true.png.png" >
 
 We can see through these plots that 'said' is one of the most common words in both datasets, thus the dataset in comprised of a lot of quotes from and about various political figures (Trump, Obama, Clinton, rex tillerson ...) and their titles (president, secretary of state, national security advisor) their political parties (Republican or Democrats), news sources (Fox news, New York Times, ...), and central places (New York , North Korea, the White House). We see also a lot of recently trending topics in the world like "Black lives matter". 
 
