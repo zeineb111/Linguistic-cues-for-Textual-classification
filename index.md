@@ -144,7 +144,7 @@ we show here the results we got for the average subjectivity for the Fake and Re
 
 ![](subjectivity.png)
 
-The Fake news are on avergae more subejctive than the True news.
+The Fake news are on avergae more subjective than the True news.
 
 
 * **Expansion, contingency and comparison**  
@@ -234,6 +234,8 @@ We inspect the subjectivity of the words having a higher likelihood of classifie
 
 We can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity. The model implicitly picks up on the subjectivity feature which justifys its relevance in the previous analysis. 
 
+**conclusion**
+
 
 
 
@@ -254,6 +256,8 @@ We build a model with:
 * We add early stopping, Learning rate reducer and Elastic net regularization to avoid overfitting  
 
 The model gave an Accuracy of **0.996** on the test set. 
+
+**conclusion**
 
 ### Embeddings
 
