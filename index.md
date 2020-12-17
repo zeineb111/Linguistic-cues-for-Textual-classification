@@ -59,13 +59,7 @@ To make our model comparable to that of the author's we try to use the same data
 
 As a first setp, we extracted the average value per seson for each of the features for the victims and betrayers in betrayal games. We created a dataframe containing all the features along with a label to distinguish the two players. We normalized the dataset uzing z-score.
 
-We visualize in this plot the distribution of distribution of the number of seasons per game:
-
-<p align="center">
-     <img src="distribution_nb_seasons.png" > 
-</p>
-
-As we can see not all games have the same number of seasons, and since the RNN model requires input (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
+Not all games have the same number of seasons, and since the RNN model requires input (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
 
 **RNN architecture**  
 our RNN model is built as follows:
@@ -264,7 +258,7 @@ We inspect the subjectivity of the words having a higher likelihood of classifie
 We can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity. The model implicitly picks up on the subjectivity feature which justifys its relevance in the previous analysis. 
 
 **conclusion**
-
+The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier doen't takes into account the number of occurences of the common words, in other words if we create two sentences one containing only one occurence of the a common word in the Fake dataset and another one containing three occurences of this word, the classifier will classify both of them with the same probability as he only detects the presence of the word and not the numnber of it's occurences.
 
 
 
