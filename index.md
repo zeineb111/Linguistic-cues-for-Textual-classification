@@ -37,7 +37,7 @@ The features are the following:
 &emsp; *disc_contingency*: words to compute the contingency feature  
 &emsp; *n_requests*: contains the number of requests  
 * **frequent_words**: the frequent words
-* **n_word**': contains the number of words
+* **n_word**': contains the number of words 
 * **politeness**: containss the politeness of the message
 * **n_sentences**: contains the number of sentences
 
