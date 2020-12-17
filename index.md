@@ -222,7 +222,7 @@ We inspect the subjectivity of the words having a higher likelihood of classifie
 <img src="subjectivity_Fake.png"  width="300" height="300">                 <img src="words_MLP_Fake.png" width="300" height="300">  
 
 
-<img src="Subjectivity_True.png"  width="300" height="300">                      <img src="words_MLP_True.png"  width="300" height="300" >
+<img src="Subjectivity_True.png"  width="300" height="300">                  <img src="words_MLP_True.png"  width="300" height="300" >
 
 We can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity. The model implicitly picks up on the subjectivity feature which justifys its relevance in the previous analysis. 
 
