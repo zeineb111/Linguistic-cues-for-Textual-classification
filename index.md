@@ -53,7 +53,35 @@ This dataset contains two sets, a set of real news and another one of fake news.
 *  **date**: date of publication of the article.
 
 # Diplomacy Game:
-The first part of our project consists on running an RNN model on the features extracted by the authors and test it's performance. 
+The first part of our project consists on running an RNN model on the features extracted by the authors and test it's performance. The goal of our analysis here is to see if analysis using time series can help improve the performance of the model made by the authors.  
+
+To make our model comparable to that of the author's we try to use the same dataset and same conventions he used.
+
+As a first setp, we extracted the average value per seson for each of the features for the victims and betrayers in betrayal games. We created a dataframe containing all the features along with a label to distinguish the two players. We normalized the dataset uzing z-score.
+
+We visualize in this plot the distribution of distribution of the number of seasons per game:
+
+
+![](distribution_nb_seasons.png)
+
+As we can see not all games have the same number of seasons, and since the RNN model requires input (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
+
+**RNN architecture**
+our RNN model is built as follows:
+*  A first RNN layer with 10 time steps each taking a 16 dimension vector and outputting a 4 dimension vector 
+*  A sigmoid layer (equivalent to logistic regression) to output the prediction, regularized by elsatic net
+*  We compile the model using the MSE loss function, the adam optimizer and the accuracy as a metric.
+*  we define an early stopping to stop training the accuracy metric has stopped improving.
+
+We used 90% of the data for training and 10% for testing. The model reached an Accuracy of  on the test set. 
+
+We show here the evolution of the binary accuracy and loss per epoch.
+
+
+![](accuracy_rnn_diplomacy.png)
+
+We also decided to tested our model on non-betrayal games to see how well it performs at detecting the non intention of betrayal. We preprocessed the non-betrayal dataset the same way as we did the the betrayal one and then we evaluated the model on it. The model reached an Accuracy of  on this test set. 
+
 
 
 Now that we are done with the Diplomacy game dataset we will move to our new dataset to explore the effect of the linguistic cues oin detecting True and Fake news.  
