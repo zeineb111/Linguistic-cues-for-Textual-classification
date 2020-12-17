@@ -1,16 +1,15 @@
 
 ## Introduction
 
-Under the scope of EPFL's ADA class project, we will perform a creative extension on the paper Linguistic  Harbingers  of  Betrayal. In this project we will work on the subject of Natural Language Processing (NLP) and more specially on Linguistic cues. As we will present to you in the next section, the authors of the paper worked on the messages of the diplomacy game and extracted some features to do some analysis and then train a simple model to perform a complex task, even for humans, which is detecting betrayal. To extend this work we will first try to train more complex and adapted models for this kind of tasks, like RNNs (see section 5) to see how they perform and draw some conclusions from the results. Then we will extend this work to another and completely different dataset, a dataset of news. The goal is to try and see if the same features can be used for various NLP examples.
+Under the scope of EPFL's ADA class project, we will perform a creative extension on the paper Linguistic Harbingers of Betrayal. In this project we will work on the subject of Natural Language Processing (NLP) and more specially on Linguistic cues. As we will present to you in the next section, the authors of the paper worked on the messages of the diplomacy game and extracted some features to do some analysis and then train a simple model to perform a complex task, even for humans, which is detecting betrayal. To extend this work we will first try to train more complex and adapted models for this kind of tasks, like RNNs to see how they perform and draw some conclusions from the results. Then we will extend this work to another and completely different dataset, a dataset of news. The goal is to try and see if the same features can be used for various NLP examples.
  
 ## Related Work: The Linguistic Harbingers of Betrayal paper 
 
 Since our work consists on a creative extension for the Linguistic Harbingers of Betrayal paper, we will describe briefly the work done by the authors to put you in the contest.    
-The authors worked on the diplomacy game, which is a war-themed strategy game where friendships and betrayals are orchestrated primarily through language. They collected a dataset, that contains 500 games half of them for games that end with an attack and the other half for games without attacks. Each game contains multiple seasons, and in each season the players communicate via messages then perform and action simultaneously. The two sets are matched to get the most accurate results.   They consider an attacker the first player that breaks the friendship. For games without an attack, the attacker is chosen randomly from the two players.   They performed some preprocessing to extract the following features from the messages: sentiments (negative, positive, neutral), politeness, talkativeness, discourse markers (planning, comparison, expansion, contingency, subjectivity, premises, claims). After extracting these features, they generated some plots to see and compare the behaviours of those between the two types of players. After some analysis, they fed these features to a Logistic regression model that achieved an accuracy of 57% at detecting betrayals.   They concluded that the classifier is able
-to exploit subtle linguistic signals that surface in the conversation. They  also analysed how these features evolve as we get closer to betrayal to detect imbalances and check how effective are the features at detecting long-term betrayals. 
+The authors worked on the diplomacy game, which is a war-themed strategy game where friendships and betrayals are orchestrated primarily through language. They collected a dataset, that contains 500 games half of them for games that end with an attack and the other half for games without attacks. Each game contains multiple seasons, and in each season the players communicate via messages then perform and action simultaneously. The two sets are matched to get the most accurate results.   They consider an attacker the first player that breaks the friendship. For games without an attack, the attacker is chosen randomly from the two players.   They performed some preprocessing to extract the following features from the messages: sentiments (negative, positive, neutral), politeness, talkativeness, discourse markers (planning, comparison, expansion, contingency, subjectivity, premises, claims). After extracting these features, they generated some plots to see and compare the behaviours of those between the two types of players. After some analysis, they fed these features to a Logistic regression model that achieved a 57% cross-validation accuracy at detecting betrayals.   They concluded that the classifier is able to exploit subtle linguistic signals that surface in the conversation. They also analysed how these features evolve as we get closer to betrayal to detect imbalances and check how effective are the features at detecting long-term betrayals. 
 
 ## Data collection  
-As we described in the Introduction, our project consists on two part each of them working on a diffrent dataset. 
+As we described in the Introduction, our project consists on two parts each of them working on a diffrent dataset. 
 
 ### Diplomcay dataset
 The first dataset is the Diplomacy game dataset that was provided with the paper. It conatins 500 games, each game is a dictionnary with 5 entries:
@@ -46,30 +45,38 @@ According to paper, the talkativeness is quantified with the number of messages 
 per sentence.
 
 ### Real and fake news dataset 
-The second dataset is the Fake and real news dataset (https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset).
+The second dataset is the Fake and real news dataset (https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset).  
+
 This dataset contains two sets, a set of real news and another one of fake news. Both sets contain the same features, which are: 
 * **text**: The actual text of the news article. 
 * **title**: The title of the article.
 * **subject**: Every article is classified in a type of subject either 'Government News' or 'Middle-east' or 'News' or 'US_News' or 'left-news' or 'politics' or 'politicsNews' or 'worldnews'.
 *  **date**: date of publication of the article.
 
+
+The  truthful  articles  were  obtained by  crawling  articles  from  Reuters.com  (News website).  As  for  the  fake  news  articles,  they  were  collected  from  different  sources.  The  fake  news articles  were  collected  from  unreliable  websites  that  were  flagged  by  Politifact  (a fact-checking organization in the USA) and Wikipedia. The dataset contains different types of articles on different topics, however,the majority of articles focuson political and World news topics.
+
 # Diplomacy Game:
 The first part of our project consists on running an RNN model on the features extracted by the authors and test it's performance. The goal of our analysis here is to see if analysis using time series can help improve the performance of the model made by the authors.  
 
-To make our model comparable to that of the author's we try to use the same dataset and same conventions he used.
+To make our model comparable to that of the author's we try to use the same dataset and same conventions they used.
 
-As a first setp, we extracted the average value per seson for each of the features for the victims and betrayers in betrayal games. We created a dataframe containing all the features along with a label to distinguish the two players. We normalized the dataset uzing z-score.
+The whole point of RNN is to see if the variation of the features between the seasons has an effect on our predictive power. For example, the evolution of politeness between seasons can be quite meaningful, in fact we notice from this plot of the authors the imbalance in the politeness of the players as we get closer to betrayal.
+
+(plot el betrayal houni) 
+
+As a first step, we extracted the average value per season for each of the features for the victims and betrayers in betrayal games. We created a dataframe containing all the features along with a label to distinguish the two players. We normalized the dataset using the z-score.
 
 Not all games have the same number of seasons, and since the RNN model requires inputs (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
 
 **RNN architecture**  
-our RNN model is built as follows:
+Our RNN model is built as follows:
 *  A first RNN layer with 10 time steps each taking a 16 dimension vector and outputting a 4 dimension vector 
 *  A sigmoid layer (equivalent to logistic regression) to output the prediction, regularized by elsatic net
 *  We compile the model using the MSE loss function, the adam optimizer and the accuracy as a metric.
 *  we define an early stopping to stop training the accuracy metric has stopped improving.
 
-We used 90% of the data for training and 10% for testing. The model reached an Accuracy of  on the test set. 
+We used 90% of the data for training and 10% for testing. The model reached an Accuracy of **0.67** on the validation set and an Accuracy of **0.45** on the test set. 
 
 We show here the evolution of the binary accuracy and loss per epoch.
 
@@ -78,27 +85,28 @@ We show here the evolution of the binary accuracy and loss per epoch.
      <img src="accuracy_rnn_diplomacy.png" > 
 </p>
 
+
+
 We also decided to tested our model on non-betrayal games to see how well it performs at detecting the non intention of betrayal. We preprocessed the non-betrayal dataset the same way as we did the the betrayal one and then we evaluated the model on it. The model reached an Accuracy of  on this test set. 
 
+**Conclusion**
+We want to perform more exhaustive NLP analysis with a larger dataset, to see if the NLP analysis model proposed by the authors and extended by our work generalizes well to other analogous cases.   
 
-
-Now that we are done with the Diplomacy game dataset we will move to our new dataset to explore the effect of the linguistic cues oin detecting True and Fake news.  
+Thus we will now move to our new dataset to explore the effect of the linguistic cues on detecting True and Fake news.  
 
 # True and Fake news:
 In this second part of our project we will deal with the True and Fake news dataset, we present to you here the diffrent steps that we performed.  
 ## Preprocessing 
-The  news datasets  requires  some  preprecessing  before  the analysis.  In  fact,  the  news  contain  a  lot  of  links,  tags  ...that are useless for the linguistic cues analysis thus we delete them.  We  also  map  all  the  news  to  lower  case  letters  to avoid miss-leading the models. We also perform some specific modifications  to  remove  empty  strings,  multiple  spaces...  to ensure  that  we  have  proper  entries  both  for  the  analysis  and the models.
-
-The True news have company's name(Reuters) and locaion of news in the beginning, we remove those to avoid havng bias.
+The news datasets requires some preprecessing  before  the analysis.  In  fact,  the  news  contain  a  lot  of  links,  tags ... that are useless for the linguistic cues analysis thus we delete them.  We  also  map  all  the  news  to  lower  case  letters  to avoid miss-leading the models. We also perform some specific modifications  to  remove  empty  strings,  multiple  spaces...  to ensure  that  we  have  proper  entries  both  for  the  analysis  and the models.
  
 
 ## Extracting features
 ### Sentiments
 ***coreNLP***
 
-The goal was to reproduce the same sentiment analysis as the ones in the paper. The authors relied on the Stanford sentiment analyser for this task. In the first part of this task we implemented methods to compute the sentiments using the Stanford coreNLP, however these computations appeared to be very time consuming ( it will take more than 2 days for the Fake news dataset only), and since we have very limited time and also limited hardware resources, we decided to limit these calculations to a subset of the datasets to see their behaviour on average.  
-The coreNLP sentiment analyser computes the sentiment based on how words compose the meaning of longer phrases and not on words independently. We computed the sentiments of each sentence using it and then took the average of the sentences sentiments to get the sentiments of a given news. This was performed on 3000 Real and Fake news respectively. Since the news are independent, (we estimate that 3000 is quite representative of the entire dataset). 
-We show here average number of Sentiments with coreNLP for 3000 Fake and Real news resepectively
+The goal was to reproduce the same sentiment analysis as the ones done in the paper. The authors relied on the Stanford sentiment analyser for this task. In the first part of this task we implemented methods to compute the sentiments using the Stanford coreNLP, however these computations appeared to be very time consuming ( it will take more than 2 days for the Fake news dataset only), and since we have very limited time and also limited hardware resources, we decided to limit these calculations to a subset of the datasets to see their behaviour on average.  
+The coreNLP sentiment analyser computes the sentiment based on how words compose the meaning of longer phrases and not on words independently. We computed the sentiments of each sentence using it and then took the average of the sentences sentiments to get the sentiments of a given news. This was performed on 3000 Real and Fake news respectively. Since the news are independent, (we estimate that 3000 is quite representative sample of the entire dataset). 
+We show here average number of Sentiments with coreNLP for 3000 Fake and Real news resepectively:
 
 <p align="center">
      <img src="coreNLP.png" > 
@@ -108,7 +116,8 @@ The Fake news have on average more negative sentiments but less positive sentime
 
 ***TextBlob***  
 
-After some researches, we found that other methods exist to perform sentiment analysis, but they are usually considered less efficient than the Stanford methods, which explains the choice of the authors. This alternative method is part of the TextBlob library that allows to compute the polarity of a text. This last, is much less time consuming, thus we were able to compute the polarity of the entire dataset. However note that while the Stanford analyser computes the number of sentiments (very negative, negative, neutral, positive, very positive) on each sentence, the TextBlob method computes the polarity on an entire text and returns a value in the interval [-1, 1] where values under zero represent negative sentiments, values above zero represent positive sentiments and zero is the neutral sentiment.
+After some researches, we found that other methods exist to perform sentiment analysis, but they are usually considered less efficient than the Stanford methods, which explains the choice of the authors. This alternative method is part of the TextBlob library that allows to compute the polarity of a text. This last, is much less time consuming, thus we were able to compute the polarity of the entire dataset. However note that while the Stanford analyser computes the number of sentiments (very negative, negative, neutral, positive, very positive) on each sentence, the TextBlob method computes the polarity, which is the overall sentiment, on an entire text and returns a value in the interval [-1, 1] where values under zero represent negative sentiments, values above zero represent positive sentiments and zero is the neutral sentiment.  
+
 After computing the polarity of each news, we split the range [-1, 1] into 5 bins to get the sets of sentiments as we had with the Stanford coreNLP. We present here the number of news by sentiment category
 
 <p align="center">
@@ -117,16 +126,25 @@ After computing the polarity of each news, we split the range [-1, 1] into 5 bin
 
 There are more positive and negative news (considering overall sentiment of the news, the polarity!) among the Fake news then among the True news. The fourth plot confirms that the Fake news are more sentimental than the True news that tend to be more neutral.
 
+**Interpretation**
+As mentioned above, Real news come from crawler went through reuters' website, thus as expected from this type of news aims for high level journalism which implies passing on news in the most authentic thus neutral way. This can be seen in the lack of sentiments and higher neutrality in Real news compared to the Fake ones as we saw in the plots. On the other han Fake news articles were collected from unreliable websites or personal tweets thus they are more likely to be oppinionated or more likely to have a populist tone of voice which is usually discouraged in news articles that should be factual and nutral. The problem of populist articles is that readers can often get distracted by the emotion of the article and skip the verification. 
+
+
 ### Politeness  
 
-To compute the politeness of each news, we used the politeness library which is a port of the Stanford Politeness API that was used by the authors. The politeness classifier takes as input a sentence and it's parses and returns the politeness of that sentence. The politeness of a news is computed as the average of it's sentences politenesses. To compute the parses, we first relied on the annotate method of the Stanford coreNLP that is computed while computing the sentiments, but as we were forced to stop this method at a certain point we had to switch to another method to compute the remaining parses. For this we used TextBlob library.  
+To compute the politeness of each news, we used the politeness library which is a part of the Stanford Politeness API that was used by the authors. The politeness classifier takes as input a sentence and its parses and returns the politeness of that sentence. The politeness of a news is computed as the average of its sentences politenesses. To compute the parses, we first relied on the annotate method of the Stanford coreNLP that is computed while computing the sentiments, but as we were forced to stop this method at a certain point and we had to switch to another method to compute the remaining parses. For this we used TextBlob library that computes the parses in the same way.  
 We show here the average politeness for the Fake vs True news:
 
 <p align="center">
      <img src="politeness.png" > 
 </p>
 
-The average politeness of the Fake and True news are very close. We performed a statistical test and found that the diffrence between the mean politeness of the Fake and Real news is significant.
+The average politeness of the Fake and True news are very close. We performed a statistical test and found that the diffrence between the mean politeness of the Fake and Real news is significant.  
+We visualize here the distribution of the politeness for the two sets.
+
+(image)
+**Interpretation**
+The small diffrence between the politeness of the True and Fake news, can be due to the fact that Fake news like in tweets can sometimes get personal and thus less polite.
 
 ### Talkativeness 
 We computed the talkativeness of each news, which consists on the number of sentences and the number of words per news. Here also we started with the CoreNLP annotate method then switched to other methods form the NLTK library. 
@@ -136,8 +154,7 @@ We show here the average talkativeness for the Fake vs True news:
      <img src="talkativeness.png" > 
 </p>
 
-There is a significant diffrence in the average number of words between the two sets, with the Fake news have a higher value on average. However, for the number of sentences, we can see from the plot that the average values are very close. We performed a statistical test on the number of sentences and found that the p_value is not significant thus we cannot conclude on the diffrence.
-
+There is a significant diffrence in the average number of words between the two sets, with the Fake news have a higher value on average with a very small std. However, for the number of sentences, we can see from the plot that the average values are very close. We performed a statistical test on the number of sentences and found that the p_value is not significant thus we cannot conclude on the diffrence.
 
 
 
@@ -152,7 +169,10 @@ we show here the results we got for the average subjectivity for the Fake and Re
      <img src="subjectivity.png" > 
 </p>
 
-The Fake news are on avergae more subjective than the True news.
+
+**Interpretation**
+
+The Fake news are on average more subjective than the True news. This is explained by the fact that subjectivity variates inversly to neutrality, thus in Fake news we have given the populist tone we tend to use strong words like 'resounding' and 'astonishing'.
 
 
 * **Expansion, contingency and comparison**  
@@ -163,7 +183,8 @@ we show here the results we got for the average values of the expansion, conting
      <img src="discourse_markers.png" > 
 </p>
 
-On avergae Fake news contain more expansion, contingency and comparaison discourse connectors than the True news. This shows that True news are less eloquant than Fake news.  
+On avergae Fake news contain more expansion, contingency and comparaison discourse connectors than the True news. This shows that True news are less eloquant than Fake news. Short setences strait to the point are factual wheras long sentences that compose fake news need more discourse connectors. 
+
 
 * **Premises and conclusions**  
 There was no predefined method for this feature as weel. We collected the markers from the internet and combined them with the features that we extracted from the diplomacy dataset, to get the complete set of markers.  
@@ -175,7 +196,7 @@ There was no predefined method for this feature as weel. We collected the marker
 the average number of premises and conclusions for the Fake and True sets are close. We performd a statistical test and found a non significant p_value thus we cannot conclude about the diffrence.
 
 ## Classification with MLP (Multi-Layer Perceptron)
-After extracting and analysing these features, we built a MLP model that classifies the Fake and True news using them. The objective here is to verify if the "Linguistic harbringers of betrayal" model generalizes to other datasets. We only retain the features that have been computed for all the dataset and that have been used by the author for homogenity to train our model. We thus used only the following features: nb_sentences,	nb_words,	politeness	premises_conclusions,	subjectivity,	polarity,	comparaison,	contingency	and expansion. To train the model we gave labels to distinguish the two datasets, 1 for the True news and zero for the Fake news. We normalized the data with the z_score scaling and we split it randomly into 80% of train set and 20% of test set.   
+After extracting and analysing these features, we built a MLP model that classifies the Fake and True news using them. The objective here is to verify if the "Linguistic harbringers of betrayal" model generalizes to other datasets. We only retain the features that have been computed for all the dataset and that have been used by the author for homogenity to train our model. We thus used only the following features: **nb_sentences**,	**nb_words**,	**politeness**,	**premises_conclusions**,	**subjectivity**,	**polarity**,	**comparaison**,	**contingency**	and **expansion.** To train the model we gave labels to distinguish the two datasets, 1 for the True news and zero for the Fake news. We normalized the data with the z_score scaling and we split it randomly into 80% of train set and 20% of test set.   
 
 **Model architecture:**  
 We build a model with:  
@@ -193,15 +214,15 @@ We present here the precison_recall curve of our model:
      <img src="precsion_recall_news_features.png" > 
 </p>
 
-
-(houni nizdou explication mtaa el plot)
-
-As we can see the model performs pretty well with those features. 
+The Precision-Recall curves summarize the trade-off between the true positive rate and the positive predictive value for a predictive model using different probability thresholds. We see that the model performs well as we got an average precison of 87% and it has a considerable AUC (Area Under the Curve).
 
 
-To extend our research even more, we will now train new models on the 'text' of the two datasets using standard deep learning and NLP techniques. The goal here is to give the model the freedom of learning its own features and then compare them with the ones of the authors and how good they are at classfying news.
+As we can see the model performs pretty well with those features, which means that they generalize well for these kinds of analogous NLP classification problems. From the performance of this modle we can conclude that these features are strongly correlated to wether news are Fake or not. However, we ask ourselves this question, are they really directly linked to the problem or simply just correlated? (CHGAABHA!!!!!!!!!!!!!!!!!!!!!!!!!)
 
-## Visualization
+To answer this question and to extend our research even more, we will now train new models on the 'text' of the two datasets using standard deep learning and NLP techniques. The goal here is to give the model the freedom of learning its own features and then compare them with the ones of the authors and how good they are at classfying news.
+
+## Textual analysis
+### Visualization
 We started by visualizing some properties of the text of our datasets to get some insights.
 
 Here we see the wordclouds that we generated for all the news:
@@ -222,7 +243,7 @@ We can see through these plots that 'said' is one of the most common words in bo
 
 After this visualization, we developed two models to classify our data. The first is a simple MLP model while the second is a more complex one, an RNN model. We describe in the following sections these two models an their results.
 
-## Classification with MLP (Multi-Layer Perceptron)
+### Classification with MLP (Multi-Layer Perceptron)
 To approach this classification problem we first want to create a vector space for our texts. We use tf-IDF vectorizer to map our documents to vectors of commonly chosen set of words (2860). Then the choice of an MLP came naturally as it's adequate to approximate multivariate mappings in higher dimensional spaces.
 
 We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data. We only keep the most common words, with minimum frequency of 0.01. We then split the data randomly into 75% of train set and 25% of test set.
@@ -263,7 +284,7 @@ The MLP model learned through training words that are the most common on each da
 
 
 
-## RNN (Recurrent Neural Network)
+### RNN (Recurrent Neural Network)
 The problem with the MLP with the TF_IDF model is that it doesn't take into account the structure of the text, its length or the order of the words in that text. This can be an important feature in texts especially in the english language that is very sensitive to the order of the words in a sentence.
 Thus, if we want to take it into account we should change the way we approach this problem. A text can be seen as a series of words, thus an RNN (a perfectly fitted model for time series) can be good to classify this text seen as a time series of words.
 
