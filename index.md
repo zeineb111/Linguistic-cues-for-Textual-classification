@@ -195,7 +195,7 @@ Here we see the wordclouds that we generated for all the news:
 
 And here we plot the top 10 n_grams of sizes 1,2 and 3: 
 
-<img src="most_common_words_all.png" > 
+<img src="common_words_all.png" > 
 
 
 
