@@ -219,10 +219,10 @@ Here we analyze how the MLP classifies the news.
 We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True respectively.  
 
 
-<img src="subjectivity_Fake.png"  width="250" height="300">                 <img src="words_MLP_Fake.png" width="450" height="320">  
+<img src="subjectivity_Fake.png"  width="300" height="300">                 <img src="words_MLP_Fake.png" width="450" height="320">  
 
 
-<img src="Subjectivity_True.png"  width="250" height="300">                  <img src="words_MLP_True.png"  width="450" height="320" >
+<img src="Subjectivity_True.png"  width="300" height="300">                  <img src="words_MLP_True.png"  width="450" height="320" >
 
 We can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity. The model implicitly picks up on the subjectivity feature which justifys its relevance in the previous analysis. 
 
