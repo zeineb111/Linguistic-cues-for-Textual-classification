@@ -163,7 +163,8 @@ There was no predefined method for this feature as weel. We collected the marker
 the average number of premises and conclusions for the Fake and True sets are close. We performd a statistical test and found that there is no significant difference.
 
 ## Classification with MLP (Multi-Layer Perceptron)
-After extracting and analysing these features, we built a MLP model that classifies the Fake and True news using them. The objective here is to verify if the "Linguistic harbringers of betrayal" model generalizes to other datasets. We only retain the features that have been computed for all the dataset and that have been used by the author for homogenity to train our model. We thus used only the following features: nb_sentences,	nb_words,	politeness	premises_conclusions,	subjectivity,	polarity,	comparaison,	contingency	and expansion. To train the model we gave labels to distinguish the two datasets, 1 for the True news and zero for the Fake news. We normalized the data with the z_score scaling and we split it randomly into 80% of train set and 20% of test set.  
+After extracting and analysing these features, we built a MLP model that classifies the Fake and True news using them. The objective here is to verify if the "Linguistic harbringers of betrayal" model generalizes to other datasets. We only retain the features that have been computed for all the dataset and that have been used by the author for homogenity to train our model. We thus used only the following features: nb_sentences,	nb_words,	politeness	premises_conclusions,	subjectivity,	polarity,	comparaison,	contingency	and expansion. To train the model we gave labels to distinguish the two datasets, 1 for the True news and zero for the Fake news. We normalized the data with the z_score scaling and we split it randomly into 80% of train set and 20% of test set.   
+
 **Model architecture:**  
 We build a model with:  
 * 16 neurones as input layer   
@@ -201,7 +202,8 @@ We can see through these plots that 'said' is one of the most common words in bo
 After this visualization, we developed two models to classify our data. The first is a simple MLP model while the second is a more complex one, an RNN model. We describe in the following sections these two models an their results.
 
 ## Classification with MLP (Multi-Layer Perceptron)
-To approach this classification problem we first want to create a vector space our our texts. We use tf-idf vectorizer to map our documents to vectors of a commonly chosen set of words (2860). Then the choice of an MLP came naturally as it's adequate to approximate multivariate mappings in higher dimensional spaces.
+To approach this classification problem we first want to create a vector space for our texts. We use tf-IDF vectorizer to map our documents to vectors of commonly chosen set of words (2860). Then the choice of an MLP came naturally as it's adequate to approximate multivariate mappings in higher dimensional spaces.
+
 We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data. We only keep the most common words, with minimum frequency of 0.01. We then split the data randomly into 75% of train set and 25% of test set.
 
 **Model architecture:**  
@@ -230,9 +232,10 @@ We can clearly see that the words with a higher likelihood to be classified as F
 
 
 ## RNN (Recurrent Neural Network)
-The problem with the MLP with the TF_idf model is that it doesn't take into account the structure of the text, its length or the order of the words in that text. This can be an important feature in texts especially in the english language that is very sensitive to the order of the words in a sentence.
+The problem with the MLP with the TF_IDF model is that it doesn't take into account the structure of the text, its length or the order of the words in that text. This can be an important feature in texts especially in the english language that is very sensitive to the order of the words in a sentence.
 Thus, if we want to take it into account we should change the way we approach this problem. A text can be seen as a series of words, thus an RNN (a perfectly fitted model for time series) can be good to classify this text seen as a time series of words.
-We then implemented an RNN model (using LSTM layers), which is better suited for these types of tasks. LSTM (long short term memory) are able to remember previously seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes it more powerful than the other models for this kind of classification.
+
+We thus implemented an RNN model using LSTM layers. LSTM (long short term memory) are able to remember previously seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes RNNs more powerful than the other models for this kind of classification.
 
 We split the data randomly into 75% of train set and 25% of test set.
 
