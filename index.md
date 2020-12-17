@@ -53,7 +53,7 @@ This dataset contains two sets, a set of real news and another one of fake news.
 *  **date**: date of publication of the article.
 
 # Diplomacy Game:
-The first part of our project consists on running an RNN model on the features extracted by the authors and test it's performance.
+The first part of our project consists on running an RNN model on the features extracted by the authors and test it's performance. 
 
 
 Now that we are done with the Diplomacy game dataset we will move to our new dataset to explore the effect of the linguistic cues oin detecting True and Fake news.  
@@ -163,6 +163,7 @@ Here we see the wordclouds that we generated for the Fake and True news respecti
 
 <img src="Fake_wordcloud.png" width="350" height="400">       <img src="wordcloud_True.png" width="350" height="400">
 
+After this visualization, we developed two models to classify our data. The first is a simple MLP model while the second is a more complex one, an RNN model. We describe in the following sections these two models an their results.
 
 ## Classification with MLP (Multi-Layer Perceptron)
 We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data.  We split the data randomly into 75% of train set and 25% of test set. The model gave an Accuracy of **0.985**, which is a very good result.
@@ -172,11 +173,10 @@ We built a MLP model to training on the Fake and True texts. Before training, we
 <img src="subjectivity_Fake.png" >                      <img src="Subjectivity_True.png" >
 
 
-## RNN
+## RNN (Recurrent Neural Network)
+We then implemented a more complex model, an RNN model which is better suited for these types of tasks. RNN remembers the past and it’s decisions are influenced by what it has learnt from the past, that's what makes it more powerful than the other models.
 
 
-## Models 
-(nizar)
 ## Conclusion
 
       
