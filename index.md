@@ -197,8 +197,9 @@ Here we see the wordclouds that we generated for all the news:
 
 And here we plot the top 10 n_grams of sizes 1, 2 and 3: 
 
-<img src="common_words_all.png" > 
-
+<p align="center">
+     <img src="common_words_all.png" > 
+</p>
 
 
 We can see through these plots that 'said' is one of the most common words in both datasets, thus the dataset in comprised of a lot of quotes from and about various political figures (Trump, Obama, Clinton, rex tillerson ...) and their titles (president, secretary of state, national security advisor) their political parties (Republican or Democrats), news sources (Fox news, New York Times, ...), and central places (New York , North Korea, the White House). We see also a lot of recently trending topics in the world like "Black lives matter". 
