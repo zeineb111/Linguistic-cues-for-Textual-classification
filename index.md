@@ -34,8 +34,8 @@ The features are the following:
 &emsp; **disc_comparison**: words to compute the comparison feature  
 &emsp; **disc_temporal_future**: words to compute the planning feature  
 &emsp; **disc_temporal_rest**: words to compute the temporal feature  
-&emsp; **disc_contingency**: words to compute the contingency feature  
-&emsp; **n_requests**: contains the number of requests  
+&emsp; **disc_contingency**: words to compute the contingency feature    
+* **n_requests**: contains the number of requests  
 * **frequent_words**: the frequent words
 * **n_word**': contains the number of words 
 * **politeness**: containss the politeness of the message
