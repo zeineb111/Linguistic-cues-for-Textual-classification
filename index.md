@@ -66,7 +66,7 @@ We visualize in this plot the distribution of distribution of the number of seas
 
 As we can see not all games have the same number of seasons, and since the RNN model requires input (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
 
-**RNN architecture**
+**RNN architecture**  
 our RNN model is built as follows:
 *  A first RNN layer with 10 time steps each taking a 16 dimension vector and outputting a 4 dimension vector 
 *  A sigmoid layer (equivalent to logistic regression) to output the prediction, regularized by elsatic net
