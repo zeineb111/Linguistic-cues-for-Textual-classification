@@ -241,7 +241,7 @@ We split the data randomly into 75% of train set and 25% of test set.
 
 **Model architecture:**  
 We build a model with:  
-* embedding layer that takes an input a 270 entries vector and outputs a 270 yime steps each with a vector of size 50
+* embedding layer that takes an input a 270 entries vector and outputs a 270 time steps each with a vector of size 50
 * bidirectional LSTM layer that outputs a vector of size 64 
 * dense layer of 64 neurons
 * 1 neurone for the last layer that is going to provide the output  
