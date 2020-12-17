@@ -179,7 +179,7 @@ We built a MLP model to training on the Fake and True texts. Before training, we
 (nizar)
 ## Conclusion
 
-   
+      
   
       
         
