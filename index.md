@@ -291,7 +291,7 @@ The model gave an Accuracy of **0.996** on the test set.
 ### Embeddings
 
 ## Conclusion
- 
+As we saw through our project, the features that the authors used to detect betrayal in the diplomacy game generalize pretty well to a completely diffrent dataset which is the Fake and True news. We also ran two diffrent models, an MLP model and a RNN model on the texts of our second dataset and got good results. However, these trained models do not generalize well when they will be tested on other sets of news like for example news from the middle-East. This is due to the fact that these models learned word specific features from the training sets and those features do not work well with new diffrent sets. However the features that the author use generalize better, because they are not specific to some type of datasets, and our project is a proof of this fact. 
       
   
       
