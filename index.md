@@ -201,6 +201,7 @@ We can see through these plots that 'said' is one of the most common words in bo
 After this visualization, we developed two models to classify our data. The first is a simple MLP model while the second is a more complex one, an RNN model. We describe in the following sections these two models an their results.
 
 ## Classification with MLP (Multi-Layer Perceptron)
+To approach this classification problem we first want to create a vector space our our texts. We use tf-idf vectorizer to map our documents to vectors of a commonly chosen set of words (2860). Then the choice of an MLP came naturally as it's adequate to approximate multivariate mappings in higher dimensional spaces.
 We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data. We only keep the most common words, with minimum frequency of 0.01. We then split the data randomly into 75% of train set and 25% of test set.
 
 **Model architecture:**  
@@ -212,7 +213,7 @@ We build a model with:
 * 1 neurone for the last layer that is going to provide the output  
 * We add early stopping and L2 regularization to avoid overfitting  
 
-The model gave an Accuracy of **0.985**, which is a very good result.
+The model gave an Accuracy of **0.985**, on the test set. 
 
 Here we analyze how the MLP classifies the news.  
 We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True respectively.  
@@ -221,7 +222,7 @@ We inspect the subjectivity of the words having a higher likelihood of classifie
 <img src="subjectivity_Fake.png" >                      <img src="Subjectivity_True.png" >
 
 
-<img src="words_MLP_Fake.png" >                      <img src="words_MLP_True.png" >
+<img src="words_MLP_Fake.png" >                         <img src="words_MLP_True.png" >
 
 We can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity. The model implicitly picks up on the subjectivity feature which justifys its relevance in the previous analysis. 
 
@@ -229,7 +230,21 @@ We can clearly see that the words with a higher likelihood to be classified as F
 
 
 ## RNN (Recurrent Neural Network)
-We then implemented a more complex model, an RNN model which is better suited for these types of tasks. RNN remembers the past and it’s decisions are influenced by what it has learnt from the past, that's what makes it more powerful than the other models.
+The problem with the MLP with the TF_idf model is that it doesn't take into account the structure of the text, its length or the order of the words in that text. This can be an important feature in texts especially in the english language that is very sensitive to the order of the words in a sentence.
+Thus, if we want to take it into account we should change the way we approach this problem. A text can be seen as a series of words, thus an RNN (a perfectly fitted model for time series) can be good to classify this text seen as a time series of words.
+We then implemented an RNN model (using LSTM layers), which is better suited for these types of tasks. LSTM (long short term memory) are able to remember previously seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes it more powerful than the other models for this kind of classification.
+
+We split the data randomly into 75% of train set and 25% of test set.
+
+**Model architecture:**  
+We build a model with:  
+* embedding layer that takes an input a 270 entries vector and outputs a 270 yime steps each with a vector of size 50
+* bidirectional LSTM layer that outputs a vector of size 64 
+* dense layer of 64 neurons
+* 1 neurone for the last layer that is going to provide the output  
+* We add early stopping, Learning rate reducer and Elastic net regularization to avoid overfitting  
+
+The model gave an Accuracy of **0.996** on the test set. 
 
 
 ## Conclusion
