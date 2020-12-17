@@ -219,6 +219,9 @@ We build a model with:
 
 The model gave an Accuracy of **0.985**, on the test set. 
 
+We present here the precison_recall curve of our model: 
+![](MLP_news_curve.png)
+
 Here we analyze how the MLP classifies the news.  
 We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True respectively.  
 
@@ -243,7 +246,7 @@ We split the data randomly into 75% of train set and 25% of test set.
 
 **Model architecture:**  
 We build a model with:  
-* embedding layer that takes an input a 270 entries vector and outputs a 270 time steps each with a vector of size 50
+* embedding layer (see next section) that takes an input a 270 entries vector and outputs a 270 time steps each with a vector of size 50
 * bidirectional LSTM layer that outputs a vector of size 64 
 * dense layer of 64 neurons
 * 1 neurone for the last layer that is going to provide the output  
@@ -251,6 +254,7 @@ We build a model with:
 
 The model gave an Accuracy of **0.996** on the test set. 
 
+### Embeddings
 
 ## Conclusion
  
