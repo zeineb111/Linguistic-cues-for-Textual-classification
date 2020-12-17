@@ -189,11 +189,11 @@ To extend our research even more, we will now train new models on the 'text' of 
 ## Visualization
 We started by visualizing some properties of the text of our datasets to get some insights.
 
-Here we see the wordclouds that we generated for the Fake and True news respectively:
+Here we see the wordclouds that we generated for all the news:
 
 <img src="wordcloud_all.png" >      
 
-
+And here we plot the top 10 n_grams of sizes 1,2 and 3: 
 
 <img src="most_common_words_all.png" > 
 
