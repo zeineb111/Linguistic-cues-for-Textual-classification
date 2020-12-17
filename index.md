@@ -192,10 +192,10 @@ We started by visualizing some properties of the text of our datasets to get som
 Here we see the wordclouds that we generated for all the news:
 
 <p align="center">
-  <img src="ordcloud_all.png" />
+  <img src="wordcloud_all.png" />
 </p>
 
-And here we plot the top 10 n_grams of sizes 1,2 and 3: 
+And here we plot the top 10 n_grams of sizes 1, 2 and 3: 
 
 <img src="common_words_all.png" > 
 
