@@ -61,8 +61,9 @@ As a first setp, we extracted the average value per seson for each of the featur
 
 We visualize in this plot the distribution of distribution of the number of seasons per game:
 
-
-![](distribution_nb_seasons.png)
+<p align="center">
+     <img src="distribution_nb_seasons.png" > 
+</p>
 
 As we can see not all games have the same number of seasons, and since the RNN model requires input (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
 
@@ -78,7 +79,9 @@ We used 90% of the data for training and 10% for testing. The model reached an A
 We show here the evolution of the binary accuracy and loss per epoch.
 
 
-![](accuracy_rnn_diplomacy.png)
+<p align="center">
+     <img src="accuracy_rnn_diplomacy.png" > 
+</p>
 
 We also decided to tested our model on non-betrayal games to see how well it performs at detecting the non intention of betrayal. We preprocessed the non-betrayal dataset the same way as we did the the betrayal one and then we evaluated the model on it. The model reached an Accuracy of  on this test set. 
 
@@ -102,7 +105,9 @@ The goal was to reproduce the same sentiment analysis as the ones in the paper. 
 The coreNLP sentiment analyser computes the sentiment based on how words compose the meaning of longer phrases and not on words independently. We computed the sentiments of each sentence using it and then took the average of the sentences sentiments to get the sentiments of a given news. This was performed on 3000 Real and Fake news respectively. Since the news are independent, (we estimate that 3000 is quite representative of the entire dataset). 
 We show here average number of Sentiments with coreNLP for 3000 Fake and Real news resepectively
 
-![](coreNLP.png)
+<p align="center">
+     <img src="coreNLP.png" > 
+</p>
 
 The Fake news have on average more negative sentiments but less positive sentiments than the True news for the samples that we considered. However the number of neutral sentiments seems to be close for both types. We performed a statistical test to compare the mean values for the neutral sentiments and we found that diffrence between the two types for this feature is not significant.
 
@@ -111,7 +116,9 @@ The Fake news have on average more negative sentiments but less positive sentime
 After some researches, we found that other methods exist to perform sentiment analysis, but they are usually considered less efficient than the Stanford methods, which explains the choice of the authors. This alternative method is part of the TextBlob library that allows to compute the polarity of a text. This last, is much less time consuming, thus we were able to compute the polarity of the entire dataset. However note that while the Stanford analyser computes the number of sentiments (very negative, negative, neutral, positive, very positive) on each sentence, the TextBlob method computes the polarity on an entire text and returns a value in the interval [-1, 1] where values under zero represent negative sentiments, values above zero represent positive sentiments and zero is the neutral sentiment.
 After computing the polarity of each news, we split the range [-1, 1] into 5 bins to get the sets of sentiments as we had with the Stanford coreNLP. We present here the number of news by sentiment category
 
-![](polarity.png)
+<p align="center">
+     <img src="polarity.png" > 
+</p>
 
 There are more positive and negative news (considering overall sentiment of the news, the polarity!) among the Fake news then among the True news. The fourth plot confirms that the Fake news are more sentimental than the True news that tend to be more neutral.
 
@@ -120,7 +127,9 @@ There are more positive and negative news (considering overall sentiment of the 
 To compute the politeness of each news, we used the politeness library which is a port of the Stanford Politeness API that was used by the authors. The politeness classifier takes as input a sentence and it's parses and returns the politeness of that sentence. The politeness of a news is computed as the average of it's sentences politenesses. To compute the parses, we first relied on the annotate method of the Stanford coreNLP that is computed while computing the sentiments, but as we were forced to stop this method at a certain point we had to switch to another method to compute the remaining parses. For this we used TextBlob library.  
 We show here the average politeness for the Fake vs True news:
 
-![](politeness.png)
+<p align="center">
+     <img src="politeness.png" > 
+</p>
 
 The average politeness of the Fake and True news are very close. We performed a statistical test and found that the diffrence between the mean politeness of the Fake and Real news is significant.
 
@@ -128,7 +137,9 @@ The average politeness of the Fake and True news are very close. We performed a 
 We computed the talkativeness of each news, which consists on the number of sentences and the number of words per news. Here also we started with the CoreNLP annotate method then switched to other methods form the NLTK library. 
 We show here the average talkativeness for the Fake vs True news:
 
-![](talkativeness.png)
+<p align="center">
+     <img src="talkativeness.png" > 
+</p>
 
 There is a significant diffrence in the average number of words between the two sets, with the Fake news have a higher value on average. However, for the number of sentences, we can see from the plot that the average values are very close. We performed a statistical test on the number of sentences and found that the diffrence in the number of sentences is not significant.
 
@@ -142,7 +153,9 @@ We weren't able to reproduce the same work done by the authors to extract the di
 for  the  subjectivity  we  used a predefined method from TextBlob library that computes it for a given text. It returns a float in the range [0.0,  1.0]  where  0.0  is  very  objective  and  1.0  is  very subjective.
 we show here the results we got for the average subjectivity for the Fake and Real news:
 
-![](subjectivity.png)
+<p align="center">
+     <img src="subjectivity.png" > 
+</p>
 
 The Fake news are on avergae more subjective than the True news.
 
@@ -151,14 +164,18 @@ The Fake news are on avergae more subjective than the True news.
 For these features, no predefined method was found. Thus we collected markers from the internet for each of them and combined them with the features that we extracted from the diplomacy dataset, to get the complete set of markers.
 we show here the results we got for the average values of the expansion, contingency and comparison features for the Fake and Real news:
 
-![](discourse_markers.png)
+<p align="center">
+     <img src="discourse_markers.png" > 
+</p>
 
 On avergae Fake news contain more expansion, contingency and comparaison discourse connectors than the True news. This shows that True news are less eloquant than Fake news.  
 
 * **Premises and conclusions**  
 There was no predefined method for this feature as weel. We collected the markers from the internet and combined them with the features that we extracted from the diplomacy dataset, to get the complete set of markers.  
 
-![](premises_conclusions.png)
+<p align="center">
+     <img src="premises_conclusions.png" > 
+</p>
 
 the average number of premises and conclusions for the Fake and True sets are close. We performd a statistical test and found that there is no significant difference.
 
@@ -177,7 +194,10 @@ The model achived an Accuracy of **0.826** on the test set.
 
 We present here the precison_recall curve of our model: 
 
-![](precsion_recall_news_features.png)
+<p align="center">
+     <img src="precsion_recall_news_features.png" > 
+</p>
+
 
 (houni nizdou explication mtaa el plot)
 
@@ -225,7 +245,10 @@ The model gave an Accuracy of **0.985**, on the test set.
 
 We present here the precison_recall curve of our model:    
 
-![](MLP_news_curve.png)
+<p align="center">
+     <img src="MLP_news_curve.png" > 
+</p>
+
 
 Here we analyze how the MLP classifies the news.  
 We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True respectively.  
