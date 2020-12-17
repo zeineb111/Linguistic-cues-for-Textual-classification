@@ -180,25 +180,48 @@ We present here the precison_recall curve of our model:
 
 (houni nizdou explication mtaa el plot)
 
-As we can see the model performs pretty well with those features.  
+As we can see the model performs pretty well with those features. 
 
-To extend our research even more, we will now train new models on the 'text' of the two datasets and compare their performance with the one we just got to see how good these features are at classfying news
+
+To extend our research even more, we will now train new models on the 'text' of the two datasets using standard deep learning and NLP techniques. The goal here is to give the model the freedom of learning its own features and then compare them with the ones of the authors and how good they are at classfying news.
 
 ## Visualization
-We started by visualizing some properties of the text of our dataset to get some insights.
+We started by visualizing some properties of the text of our datasets to get some insights.
 
 Here we see the wordclouds that we generated for the Fake and True news respectively:
 
 <img src="Fake_wordcloud.png" width="350" height="400">       <img src="wordcloud_True.png" width="350" height="400">
 
+
+<img src="n_grams_Fake.png" >                      <img src="n_grams_True.png" >
+
+We can see through these plots that 'said' is one of the most common words in both datasets, thus the dataset in comprised of a lot of quotes from and about various political figures (Trump, Obama, Clinton, rex tillerson ...) and their titles (president, secretary of state, national security advisor) their political parties (Republican or Democrats), news sources (Fox news, New York Times, ...), and central places (New York , North Korea, the White House). We see also a lot of recently trending topics in the world like "Black lives matter". 
+
+
 After this visualization, we developed two models to classify our data. The first is a simple MLP model while the second is a more complex one, an RNN model. We describe in the following sections these two models an their results.
 
 ## Classification with MLP (Multi-Layer Perceptron)
-We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data.  We split the data randomly into 75% of train set and 25% of test set. The model gave an Accuracy of **0.985**, which is a very good result.
+We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data. We only keep the most common words, with minimum frequency of 0.01. We then split the data randomly into 75% of train set and 25% of test set.
 
+**MLP architecture** 
+* 
+* 
+
+
+The model gave an Accuracy of **0.985**, which is a very good result.
+
+Here we analyze how the MLP classifies the news.  
+We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True respectively.  
 
 
 <img src="subjectivity_Fake.png" >                      <img src="Subjectivity_True.png" >
+
+
+<img src="words_MLP_Fake.png" >                      <img src="words_MLP_True.png" >
+
+Wz can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity.
+
+
 
 
 ## RNN (Recurrent Neural Network)
