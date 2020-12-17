@@ -191,7 +191,8 @@ We started by visualizing some properties of the text of our datasets to get som
 
 Here we see the wordclouds that we generated for the Fake and True news respectively:
 
-<img src="Fake_wordcloud.png" width="350" height="400">       <img src="wordcloud_True.png" width="350" height="400">
+<img src="Fake_wordcloud.png" >      
+<img src="wordcloud_True.png" >
 
 
 <img src="most_common_words_all.png" > 
