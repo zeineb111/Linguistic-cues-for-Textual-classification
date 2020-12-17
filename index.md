@@ -109,7 +109,7 @@ We show here average number of Sentiments with coreNLP for 3000 Fake and Real ne
      <img src="coreNLP.png" > 
 </p>
 
-The Fake news have on average more negative sentiments but less positive sentiments than the True news for the samples that we considered. However the number of neutral sentiments seems to be close for both types. We performed a statistical test to compare the mean values for the neutral sentiments and we found that diffrence between the two types for this feature is not significant.
+The Fake news have on average more negative sentiments but less positive sentiments than the True news for the samples that we considered. However the number of neutral sentiments seems to be close for both types. We performed a statistical test to compare the mean values for the neutral sentiments and we found that diffrence between the two types and we didn't find a significant p_value thus we cannot conclude on the diffrence.
 
 ***TextBlob***  
 
@@ -141,7 +141,7 @@ We show here the average talkativeness for the Fake vs True news:
      <img src="talkativeness.png" > 
 </p>
 
-There is a significant diffrence in the average number of words between the two sets, with the Fake news have a higher value on average. However, for the number of sentences, we can see from the plot that the average values are very close. We performed a statistical test on the number of sentences and found that the diffrence in the number of sentences is not significant.
+There is a significant diffrence in the average number of words between the two sets, with the Fake news have a higher value on average. However, for the number of sentences, we can see from the plot that the average values are very close. We performed a statistical test on the number of sentences and found that the p_value is not significant thus we cannot conclude on the diffrence.
 
 
 
@@ -177,7 +177,7 @@ There was no predefined method for this feature as weel. We collected the marker
      <img src="premises_conclusions.png" > 
 </p>
 
-the average number of premises and conclusions for the Fake and True sets are close. We performd a statistical test and found that there is no significant difference.
+the average number of premises and conclusions for the Fake and True sets are close. We performd a statistical test and found a non significant p_value thus we cannot conclude about the diffrence.
 
 ## Classification with MLP (Multi-Layer Perceptron)
 After extracting and analysing these features, we built a MLP model that classifies the Fake and True news using them. The objective here is to verify if the "Linguistic harbringers of betrayal" model generalizes to other datasets. We only retain the features that have been computed for all the dataset and that have been used by the author for homogenity to train our model. We thus used only the following features: nb_sentences,	nb_words,	politeness	premises_conclusions,	subjectivity,	polarity,	comparaison,	contingency	and expansion. To train the model we gave labels to distinguish the two datasets, 1 for the True news and zero for the Fake news. We normalized the data with the z_score scaling and we split it randomly into 80% of train set and 20% of test set.   
