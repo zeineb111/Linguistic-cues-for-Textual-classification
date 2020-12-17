@@ -203,10 +203,14 @@ After this visualization, we developed two models to classify our data. The firs
 ## Classification with MLP (Multi-Layer Perceptron)
 We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data. We only keep the most common words, with minimum frequency of 0.01. We then split the data randomly into 75% of train set and 25% of test set.
 
-**MLP architecture** 
-* 
-* 
-
+**Model architecture:**  
+We build a model with:  
+* 2860 neurones as input layer   
+* 300 neurones for the first hidden layer  
+* 100 neurones for the second hidden layer  
+* 50 neurones for the third hidden layer 
+* 1 neurone for the last layer that is going to provide the output  
+* We add early stopping and L2 regularization to avoid overfitting  
 
 The model gave an Accuracy of **0.985**, which is a very good result.
 
