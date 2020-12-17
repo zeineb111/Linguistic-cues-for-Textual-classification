@@ -60,7 +60,7 @@ To make our model comparable to that of the author's we try to use the same data
 
 As a first setp, we extracted the average value per seson for each of the features for the victims and betrayers in betrayal games. We created a dataframe containing all the features along with a label to distinguish the two players. We normalized the dataset uzing z-score.
 
-Not all games have the same number of seasons, and since the RNN model requires input (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
+Not all games have the same number of seasons, and since the RNN model requires inputs (in our case the games) of the same size, we will padd the games with empty seasons to have all games with the same length, which is the length of the longest game in our dataset. Now all the games have 10 seasons.
 
 **RNN architecture**  
 our RNN model is built as follows:
@@ -267,7 +267,9 @@ The MLP model learned through training words that are the most common on each da
 The problem with the MLP with the TF_IDF model is that it doesn't take into account the structure of the text, its length or the order of the words in that text. This can be an important feature in texts especially in the english language that is very sensitive to the order of the words in a sentence.
 Thus, if we want to take it into account we should change the way we approach this problem. A text can be seen as a series of words, thus an RNN (a perfectly fitted model for time series) can be good to classify this text seen as a time series of words.
 
-We thus implemented an RNN model using LSTM layers. LSTM (long short term memory) are able to remember previously seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes RNNs more powerful than the other models for this kind of classification.
+Not all texts have the same length, and since the RNN model requires inputs of the same size, we will padd the text and we set them all to a length of 270 words.
+
+We implemented an RNN model using LSTM layers. LSTM (long short term memory) are able to remember previously seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes RNNs more powerful than the other models for this kind of classification.
 
 We split the data randomly into 75% of train set and 25% of test set.
 
