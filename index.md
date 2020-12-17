@@ -161,7 +161,7 @@ We started by visualizing some properties of the text of our dataset to get some
 
 Here we see the wordclouds that we generated for the Fake and True news respectively:
 
-<img src="Fake_wordcloud.png" width="500" height="400">                      <img src="wordcloud_True.png" width="500" height="400">
+<img src="Fake_wordcloud.png" width="500" height="400">       <img src="wordcloud_True.png" width="500" height="400">
 
 
 ## Classification with MLP (Multi-Layer Perceptron)
@@ -170,6 +170,10 @@ We built a MLP model to training on the Fake and True texts. Before training, we
 
 
 <img src="subjectivity_Fake.png" >                      <img src="Subjectivity_True.png" >
+
+
+## RNN
+
 
 ## Models 
 (nizar)
