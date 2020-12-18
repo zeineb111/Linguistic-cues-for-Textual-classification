@@ -223,7 +223,7 @@ The Precision-Recall curves summarize the trade-off between the true positive ra
 
 As we can see the model performs pretty well with those features, which means that they generalize well for these kinds of analogous NLP classification problems. From the performance of this modle we can conclude that these features are strongly correlated to wether news are Fake or not. However, we ask ourselves this question, are they really directly linked to the problem or simply just correlated? (CHGAABHA!!!!!!!!!!!!!!!!!!!!!!!!!)
 
-To answer this question and to extend our research even more, we will now train new models on the 'text' of the two datasets using standard deep learning and NLP techniques. The goal here is to give the model the freedom of learning its own features and then compare them with the ones of the authors and how good they are at classfying news.
+To answer this question and to extend our research even more, we will now train new models on the 'text' of the two datasets using standard deep learning and NLP techniques. The goal here is to give the model the freedom of learning its own features and then compare them with the ones of the authors and see how good they are at classfying news.
 
 ## Textual analysis
 ### Visualization
@@ -251,9 +251,9 @@ After these visualizations, we developed two models to classify our data. The fi
 
 ### Classification with MLP (Multi-Layer Perceptron)
 To approach this classification problem we first want to create a vector space for our documents.
-We opt for the usage of TF-IDF vectorizer to map our documents to vectors who have as features, the TF-IDF value of the most common set of words in the different news articles (2860 words which are the words that present in at least 1% of the documents). 
+We opt for the TF-IDF vectorizer to map our documents to vectors who have as features the TF-IDF value of the most common set of words in the different news articles. We got 2860 words which are the words that are present in at least 1% of the documents. 
 The choice of an MLP came naturally as it's extremely perfomant to approximate complex multivariate mappings in higher dimensional spaces.
-Before training, we normalized the datasets using the l2 norm. We then split the data randomly into 75% of train set and 25% of test set.
+Before training, we normalized the datasets using the L2 norm. We then split the data randomly into 75% of train set and 25% of test set.
 
 **Model architecture:**  
 We build a model with:  
@@ -290,14 +290,16 @@ We can clearly see that the words with a higher likelihood to be classified as F
 
 
 **But !**  
-The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier, thus has a bias towards certain words being used in this context. This is something that the previous analysis (with sentiments) clearly doesn't have a bias towards these words because it operates at a certain level of abstraction above: only the feeling that comes out of the sentence in general is taken into account. 
+The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier, thus has a bias towards certain words being used in this context. This is something that the previous analysis (with sentiments) clearly doesn't have a bias towards these words because it operates at a certain level of abstraction above: only the feeling that comes out of the sentence in general is taken into account.  
+
+We present here an example of a Fake statement that we fed to the model to see how it classifies it . The sentence contains one of the words the MLP uses to detect with high probability Real News, which is 'said'
 
  ```bash
- print("probability of classifying the sentence trump said as true is: ", clf.predict_proba(vectorizer.transform(["Trump said that the WAP group is the best"]))[0][1])
+ print("probability of classifying the sentence as true is: ", clf.predict_proba(vectorizer.transform(["Trump said that the WAP group is the best"]))[0][1])
  
  ```
  
- probability of classifying the sentence trump said as true is: 0.8365605057544774  :partying_face:
+ probability of classifying the sentence as true is: 0.8365605057544774  :partying_face:
 
 
 
@@ -333,19 +335,34 @@ The model gave an accuracy of **0.996** on the test set. **0.997** also of F1, r
 
 The model performs extremely well with very fast convergence (on average less than 10 epochs) as seen in the graph.
 
-We also check if the problem has the prevoiously mentionned bias to words highly associated to fake news.
+We also check if the problem has the prevoiously mentionned bias to words highly associated to fake news. We use the same previous sentence and we feed it the the classifier.
 
 ```bash
 sad_us = pad_sequences(tokenizer.texts_to_sequences(["Trump said that the WAP group is the best"]), maxlen = 270, padding='post', truncating='post')
-print("probability of classifying the sentence trump said as true is: ", model.predict(sad_us)[0][0])
+print("probability of classifying the sentence as true is: ", model.predict(sad_us)[0][0])
 ```
-probability of classifying the sentence trump said as true is:  0.0047642803 :cry:  
-**conclusion**
+probability of classifying the sentence as true is:  0.0047642803 :cry:  
 
+**So !**
+As we can see, this model didn't fall into our trap and was able to detect that the setence is Fake with high probability.
 
 
 ## Conclusion
 As we saw through our project, the features that the authors used to detect betrayal in the diplomacy game generalize pretty well to a completely diffrent dataset which is the Fake and True news. We also ran two diffrent models, an MLP model and a RNN model on the texts of our second dataset and got good results. However, these trained models do not generalize well when they will be tested on other sets of news like for example news from the middle-East. This is due to the fact that these models learned word specific features from the training sets and those features do not work well with new diffrent sets. However the features that the author use generalize better, because they are not specific to some type of datasets, and our project is a proof of this fact. 
+
+
+# Authors
+Zeineb Ayadi 
+Nizar Ghandri 
+Ana Lucia 
+
+# Refrences 
+1. https://stanfordnlp.github.io/CoreNLP/
+2. https://towardsdatascience.com/recurrent-neural-networks-d4642c9bc7ce
+3. https://nlp.stanford.edu/projects/glove/
+4. https://textblob.readthedocs.io/en/dev/
+5. https://vene.ro/betrayal/
+6. https://cran.r-project.org/web/packages/politeness/vignettes/politeness.html
       
   
       
