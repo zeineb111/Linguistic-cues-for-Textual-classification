@@ -277,7 +277,7 @@ We present here the precison_recall curve of our model:
 We see that the model performs extremely well as we got an average precision of 100% and it has an almost perfect AUC (Area Under the Curve).  
 
 Here we analyze how the MLP classifies the news.  
-We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True, respectively.  
+We inspect the subjectivity of the words having a higher likelihood of beeing classified as Fake or True, respectively.  
 
 <p align="center">
 <img src="subj_Fake.png"  width="350" height="300">                 <img src="words_MLP_Fake_new.png" width="450" height="300">  
@@ -287,8 +287,9 @@ We inspect the subjectivity of the words having a higher likelihood of classifie
 <img src="subj_True.png"  width="350" height="300">                  <img src="words_MLP_True_new.png"  width="450" height="300" >
 </p>
 
-We can clearly see that the words with a higher likelihood to be classified as Fake have significantly higher subjectivity (p-value = . The model implicitly picks up on the subjectivity feature which justifies its relevance in the previous analysis. 
- TODOOOOOOOOOOOOOOOOOO
+
+We can clearly see that the words with a higher likelihood to be classified as Fake have no correlation with the subjectivity feature. This implies that the model found its own decision boundary for classification, which is a small subset of the combination of certain features with certain values. The model does not implicitly pick up the features defined in the previous sections. This is quite common with MLP models as they are good at finding implicit decision boundaries while us as humans have more explicit decision boundaries for this kind of problems.
+
 
 
 **But !**  
@@ -340,7 +341,7 @@ We build a model with:
 * 1 neuron for the last layer that is going to provide the output  
 * We add early stopping, learning rate reducer and Elastic net regularization to avoid overfitting  
 
-The model gave an accuracy of **0.991** on the test set and **0.992** for the F1 score!
+The model gave an accuracy of **0.992** on the test set and **0.992** for the F1 score!
 
 <p align="center">
      <img src="last_rnn_new.png" > 
@@ -358,11 +359,11 @@ print("probability of classifying the sentence as true is: ", model.predict(sad_
 probability of classifying the sentence as true is:  0.0012544087 :cry:  
 
 **So !**     
-As we can see, this model didn't fall into our trap and was able to detect that the sentence is Fake with high probability.
----conclude about the effect of embeddings 
+As we can see, given that this model does not rely on individual words but rather the entire structure of the sentence/text, it managed to actually bypass the bias that the MLP was unable to.  
 
 ## Conclusion
-As we saw through our project, the features that the authors used to detect betrayal in the diplomacy game generalize pretty well to a completely different dataset which is the Fake and True news. We also ran two different models, an MLP model and a RNN model on the texts of our second dataset and got good results. However, these trained models do not generalize well when they will be tested on other sets of news like for example news from the middle East. This is due to the fact that these models learned word specific features from the training sets and those features do not work well with new different sets. However, the features that the author use generalize better because they are not specific to some type of datasets, and our project is a proof of this fact. 
+As we saw throughout our project, the features that the authors used to detect betrayal in the diplomacy game is pretty generenic, in a sense that it generalizes pretty well to  completely different yet analgous NLP classification problems (for example the Fake and True news dataset).  We also ran two different models, an MLP model and a RNN model on the texts of our second dataset and got pretty good results. However, these trained models do not generalize well when they will be tested on other sets of news like for example news from the Asian news. This is due to the fact that these models learned word specific features from the training sets and those features do not work well with new different sets.    
+Although not as efficient, the features that the author used generalize better because they are not specific to some type of datasets, but rather specific to a communication intention (lying, betraying, spreading rumors) and how us as humans have a tendency to react when we are confronted or we doing these actions. And thus is on a hugher level of abstraction.
 
 
 # Authors
