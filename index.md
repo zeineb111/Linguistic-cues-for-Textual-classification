@@ -84,7 +84,7 @@ We show here the evolution of the binary accuracy and loss per epoch.
 
 
 <p align="center">
-     <img src="accuracy_rnn_diplomacy.png" > 
+     <img src="accuracy_rnn_diplomacy.png"  width=400 height=400> 
 </p>
 
 
