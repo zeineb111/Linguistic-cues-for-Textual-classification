@@ -222,9 +222,10 @@ We present here the precison_recall curve of our model:
 The Precision-Recall curves summarize the trade-off between the true positive rate and the positive predictive value for a predictive model using different probability thresholds. We see that the model performs well as we got an average precision of 87% and it has a considerable AUC (Area Under the Curve).
 
 
-As we can see the model performs pretty well with those features, which means that they generalize well for these kinds of analogous NLP classification problems. From the performance of this model, we can conclude that these features are strongly correlated to weather news are Fake or not. However, we ask ourselves this question, are they really directly linked to the problem or simply just correlated? (CHGAABHA!!!!!!!!!!!!!!!!!!!!!!!!!)
+As we can see the model performs pretty well with those features, which might imply that they generalize well for these kinds of analogous NLP classification problems.  
+From the performance of this model, we can conclude that these features are strongly correlated to weather news are Fake or not. 
 
-To answer this question and to extend our research even more, we will now train new models on the 'text' of the two datasets using standard deep learning and NLP techniques. The goal here is to give the model the freedom of learning its own features and then compare them with the ones of the authors and see how good they are at classifying news.
+Now we will train new models on the 'text' of the two datasets using standard deep learning and NLP techniques. The goal here is to give the model the freedom of learning its own features and then compare them with the ones of the authors and see how good they are at classifying news.
 
 ## Textual analysis
 ### Visualization
