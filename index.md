@@ -302,7 +302,7 @@ print("probability of classifying the sentence as true is: ", clf.predict_proba(
  
  ```
  
-probability of classifying the sentence as true is:  0.9999736807309447  :partying_face:
+probability of classifying the sentence as true is:  0.9999736807309447  :joy:
 
 
 
