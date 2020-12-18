@@ -140,9 +140,13 @@ We show here the average politeness for the Fake vs True news:
 </p>
 
 The average politeness of the Fake and True news are very close. We performed a statistical test and found that the diffrence between the mean politeness of the Fake and Real news is significant.  
+
 We visualize here the distribution of the politeness for the two sets.
 
-(image)
+<p align="center">
+     <img src="politeness_distrib.png" > 
+</p>
+
 **Interpretation**
 The small diffrence between the politeness of the True and Fake news, can be due to the fact that Fake news like in tweets can sometimes get personal and thus less polite.
 
