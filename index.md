@@ -295,7 +295,7 @@ We can clearly see that the words with a higher likelihood to be classified as F
 **But !**  
 The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier, thus has a bias towards certain words being used in this context. This is something that the previous analysis (with sentiments) clearly doesn't have a bias towards these words because it operates at a certain level of abstraction above: only the feeling that comes out of the sentence in general is taken into account.  
 
-We present here an example of a Fake statement that we fed to the model to see how it classifies it . The sentence contains one of the words the MLP uses to detect with high probability Real News, which is 'said'
+We present here an example of a Fake statement that we fed to the model to see how it classifies it . The sentence contains one of the words the MLP uses to detect with high probability Real news, which is 'said'.
 
  ```bash
  print("probability of classifying the sentence as true is: ", clf.predict_proba(vectorizer.transform(["Trump said that the WAP group is the best"]))[0][1])
