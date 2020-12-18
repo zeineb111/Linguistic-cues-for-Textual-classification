@@ -293,7 +293,7 @@ The MLP model learned through training words that are the most common on each da
  
  ```
  
- probability of classifying the sentence trump said as true is: 0.8365605057544774
+ probability of classifying the sentence trump said as true is: 0.8365605057544774  :partying_face:
 
 
 
@@ -310,7 +310,7 @@ We implemented an RNN model using LSTM layers. LSTM (long short term memory) and
 
 -- Explain embeddings
 
-To note how important the embeddings are the model initially run without them only reached 82% accuracy and 70% F1 score on the training set with very slow convergence (after 100 epochs, which was almost 1 hour of running with the google COLAB GPU). However stay tuned to see what is the effect of adding an embedding layer to the model :smiley:
+To note how important the embeddings are the model initially run without them only reached 82% accuracy and 70% F1 score on the training set with very slow convergence (after 100 epochs, which was almost 1 hour of running with the google COLAB GPU). However stay tuned to see what is the effect of adding an embedding layer to the model.
 
 
 
