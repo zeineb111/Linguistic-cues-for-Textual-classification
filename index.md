@@ -15,7 +15,7 @@ As we described in the Introduction, our project consists of two parts each of t
 The first dataset is the Diplomacy game dataset that was provided with the paper. It contains 500 games, each game is a dictionary with 5 entries:
 * **seasons**: a list of the game seasons
 * **game**: unique identifier of the game it comes from 
-* **betrayal**: a Boolean indicating if the relationship ended in betrayal or not 
+* **betrayal**: a Boolean indicating if the relationship ended in betrayal or not  
 * **idx**: unique identifier of the dataset entry  
 * **people**: the countries played by the players   
 
