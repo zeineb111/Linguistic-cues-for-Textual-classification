@@ -356,7 +356,7 @@ print("probability of classifying the sentence as true is: ", model.predict(sad_
 ```
 probability of classifying the sentence as true is:  0.0047642803 :cry:  
 
-**So !**
+**So !**   
 As we can see, this model didn't fall into our trap and was able to detect that the setence is Fake with high probability.
 
 
