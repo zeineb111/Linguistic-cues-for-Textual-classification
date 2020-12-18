@@ -335,7 +335,7 @@ We also check if the problem has the prevoiously mentionned bias to words highly
 sad_us = pad_sequences(tokenizer.texts_to_sequences(["Trump said that the WAP group is the best"]), maxlen = 270, padding='post', truncating='post')
 print("probability of classifying the sentence trump said as true is: ", model.predict(sad_us)[0][0])
 ```
-probability of classifying the sentence trump said as true is:  0.0047642803 :disappointed_relieved:  
+probability of classifying the sentence trump said as true is:  0.0047642803 :cry:  
 **conclusion**
 
 
