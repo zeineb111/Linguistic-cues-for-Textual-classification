@@ -285,7 +285,7 @@ We can clearly see that the words with a higher likelihood to be classified as F
  TODOOOOOOOOOOOOOOOOOO
 
 
-**But !**
+**But !**  
 The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier, thus has a bias towards certain words being used in this context. This is something that the previous analysis (with sentiments) clearly doesn't have a bias towards these words because it operates at a certain level of abstraction above: only the feeling that comes out of the sentence in general is taken into account. 
 
  ```bash
@@ -298,28 +298,47 @@ The MLP model learned through training words that are the most common on each da
 
 
 ### RNN (Recurrent Neural Network)
-The problem with the MLP with the TF_IDF model is that it doesn't take into account the structure of the text, its length or the order of the words in that text. This can be an important feature in texts especially in the english language that is very sensitive to the order of the words in a sentence.
+The MLP with the TF_IDF model is that it doesn't take into account the structure of the text, its length or the order of the words in that text. This can be an important feature in texts especially in the english language that is very sensitive to the order of the words in a sentence. (For example, Has Nizar been to the barber is 
 Thus, if we want to take it into account we should change the way we approach this problem. A text can be seen as a series of words, thus an RNN (a perfectly fitted model for time series) can be good to classify this text seen as a time series of words.
 
 Not all texts have the same length, and since the RNN model requires inputs of the same size, we will padd the text and we set them all to a length of 270 words.
 
-We implemented an RNN model using LSTM layers. LSTM (long short term memory) are able to remember previously seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes RNNs more powerful than the other models for this kind of classification.
+We implemented an RNN model using LSTM layers. LSTM (long short term memory) and because sequences are kind off long (270 times steps !) thus we need the forget gate to be able to remember far away but previously  seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes RNNs more powerful than the other models for this kind of classification. We split the data randomly into 75% of train set and 25% of test set.
 
-We split the data randomly into 75% of train set and 25% of test set.
+
+### Embeddings
+
+-- Explain embeddings
+
+To note how important the embeddings are the model initially run without them only reached 82% accuracy and 70% F1 score on the training set with very slow convergence (after 100 epochs, which was almost 1 hour of running with the google COLAB GPU). However stay tuned to see what is the effect of adding an embedding layer to the model :smiley:
+
+
 
 **Model architecture:**  
 We build a model with:  
 * embedding layer (see next section) that takes an input a 270 entries vector and outputs a 270 time steps each with a vector of size 50
 * bidirectional LSTM layer that outputs a vector of size 64 
-* dense layer of 64 neurons
+* dense layer of 64 neurons  
+* dropout layer of 0.2  
 * 1 neurone for the last layer that is going to provide the output  
 * We add early stopping, Learning rate reducer and Elastic net regularization to avoid overfitting  
 
-The model gave an Accuracy of **0.996** on the test set. 
+The model gave an accuracy of **0.996** on the test set. **0.997** also of F1, recall and precision !
 
+-- INSERT GRAPH
+
+The model performs extremely well with very fast convergence (on average less than 10 epochs) as seen in the graph.
+
+We also check if the problem has the prevoiously mentionned bias to words highly associated to fake news.
+
+```bash
+sad_us = pad_sequences(tokenizer.texts_to_sequences(["Trump said that the WAP group is the best"]), maxlen = 270, padding='post', truncating='post')
+print("probability of classifying the sentence trump said as true is: ", model.predict(sad_us)[0][0])
+```
+probability of classifying the sentence trump said as true is:  0.0047642803
 **conclusion**
 
-### Embeddings
+
 
 ## Conclusion
 As we saw through our project, the features that the authors used to detect betrayal in the diplomacy game generalize pretty well to a completely diffrent dataset which is the Fake and True news. We also ran two diffrent models, an MLP model and a RNN model on the texts of our second dataset and got good results. However, these trained models do not generalize well when they will be tested on other sets of news like for example news from the middle-East. This is due to the fact that these models learned word specific features from the training sets and those features do not work well with new diffrent sets. However the features that the author use generalize better, because they are not specific to some type of datasets, and our project is a proof of this fact. 
