@@ -187,7 +187,7 @@ For these features, no predefined method was found. Thus, we collected markers f
 we show here the results we got for the average values of the expansion, contingency and comparison features for the Fake and Real news:
 
 <p align="center">
-     <img src="discourse_markers.png" > 
+     <img src="discourse_markers_new.png" > 
 </p>
 
 On average Fake news contain more expansion, contingency and comparison discourse connectors than the True news. This shows that True news are less eloquent than Fake news. Short sentences strait to the point are factual whereas long sentences that compose fake news need more discourse connectors. 
