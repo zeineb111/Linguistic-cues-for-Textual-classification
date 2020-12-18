@@ -223,7 +223,7 @@ To answer this question and to extend our research even more, we will now train 
 
 ## Textual analysis
 ### Visualization
-We started by visualizing some properties of the text of our datasets to get some insights.
+We started by visualizing some textual properties of our dataset to get some insights.
 
 Here we see the wordclouds that we generated for all the news:
 
@@ -238,15 +238,18 @@ And here we plot the top 10 n_grams of sizes 1, 2 and 3:
 </p>
 
 
-We can see through these plots that 'said' is one of the most common words in both datasets, thus the dataset in comprised of a lot of quotes from and about various political figures (Trump, Obama, Clinton, rex tillerson ...) and their titles (president, secretary of state, national security advisor) their political parties (Republican or Democrats), news sources (Fox news, New York Times, ...), and central places (New York , North Korea, the White House). We see also a lot of recently trending topics in the world like "Black lives matter". 
+We can see through these plots that 'said' is one of the most common words in both datasets, thus the dataset is comprised of a lot of quotes or hearsay about various eminent political figures (Trump, Obama, Clinton, rex tillerson ...) and their political parties (Republican or Democrat). The dataset also quotes various infamous news sources (Fox news, New York Times, ...). We see also a lot of recently trending topics in the world like "Black lives matter". 
+Central hubs of power are (New York , North Korea, the White House) are also mentionned all the way throughout the news. 
+Thus the lingo is mostly based on US political news (internal or external).
 
 
-After this visualization, we developed two models to classify our data. The first is a simple MLP model while the second is a more complex one, an RNN model. We describe in the following sections these two models an their results.
+After these visualizations, we developed two models to classify our data. The first is an MLP model combined with TF-IDF while the second is a more complex one, an RNN model. We describe in the following sections these two models an their results.
 
 ### Classification with MLP (Multi-Layer Perceptron)
-To approach this classification problem we first want to create a vector space for our texts. We use tf-IDF vectorizer to map our documents to vectors of commonly chosen set of words (2860). Then the choice of an MLP came naturally as it's adequate to approximate multivariate mappings in higher dimensional spaces.
-
-We built a MLP model to training on the Fake and True texts. Before training, we normalized the datasets using a TF-IDF representations for the text data. We only keep the most common words, with minimum frequency of 0.01. We then split the data randomly into 75% of train set and 25% of test set.
+To approach this classification problem we first want to create a vector space for our documents.
+We opt for the usage of TF-IDF vectorizer to map our documents to vectors who have as features, the TF-IDF value of the most common set of words in the different news articles (2860 words which are the words that present in at least 1% of the documents). 
+The choice of an MLP came naturally as it's extremely perfomant to approximate complex multivariate mappings in higher dimensional spaces.
+Before training, we normalized the datasets using the l2 norm. We then split the data randomly into 75% of train set and 25% of test set.
 
 **Model architecture:**  
 We build a model with:  
@@ -265,6 +268,7 @@ We present here the precison_recall curve of our model:
      <img src="MLP_news_curve.png" > 
 </p>
 
+We see that the model performs extremely well as we got an average precison of 100% and it has an almost perfect AUC (Area Under the Curve).  
 
 Here we analyze how the MLP classifies the news.  
 We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True respectively.  
@@ -277,10 +281,19 @@ We inspect the subjectivity of the words having a higher likelihood of classifie
 <img src="Subjectivity_True.png"  width="350" height="300">                  <img src="words_MLP_True.png"  width="450" height="300" >
 </p>
 
-We can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity. The model implicitly picks up on the subjectivity feature which justifys its relevance in the previous analysis. 
+We can clearly see that the words with a higher likelihood to be classified as Fake have signifiacntly higher subjectivity (p-value = . The model implicitly picks up on the subjectivity feature which justifies its relevance in the previous analysis. 
+ TODOOOOOOOOOOOOOOOOOO
+
 
 **conclusion**
 The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier doen't takes into account the number of occurences of the common words, in other words if we create two sentences one containing only one occurence of the a common word in the Fake dataset and another one containing three occurences of this word, the classifier will classify both of them with the same probability as he only detects the presence of the word and not the numnber of it's occurences.
+
+ '''
+ print("probability of classifying the sentence trump said as true is: ", clf.predict_proba(vectorizer.transform(["Trump said"]))[0][1])
+ 
+ ''' 
+ 
+ probability of classifying the sentence trump said as true is:  0.9902910193549522
 
 
 
