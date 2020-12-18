@@ -370,7 +370,7 @@ As we saw through our project, the features that the authors used to detect betr
 # Authors
 Zeineb Ayadi   
 Nizar Ghandri   
-Ana Lucia   
+Ana Lucia Carrizo Delgado  
 
 # References 
 1. https://stanfordnlp.github.io/CoreNLP/
