@@ -343,7 +343,7 @@ We build a model with:
 The model gave an accuracy of **0.991** on the test set and **0.992** for the F1 score!
 
 <p align="center">
-     <img src="last_rnn._new.png" > 
+     <img src="last_rnn_new.png" > 
 </p>
 
 
