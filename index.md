@@ -328,7 +328,7 @@ In our case, we use GloVe, which is an unsupervised learning algorithm for obtai
 More precisely, we use pre-trained word vectors from twitter with 2B tweets, 27B tokens, 1.2M vocab, uncased. 
 We opt for 50 dimension version (as it is enough for our project).
 
-To note how important the embeddings are the model initially was run without them and only reached 82% accuracy and 70% F1 score on the training set with very slow convergence (after 100 epochs, which was almost 1 hour of running with the Google Colab with GPU). However, stay tuned to see what is the effect of adding an embedding layer to the model :wink:
+To note how important the embeddings are the model initially was run without them and only reached 82% accuracy at best and 70% F1 score on the training set with very slow convergence (after 100 epochs, which was almost 1 hour of running with the Google Colab with GPU). However, stay tuned to see what is the effect of adding an embedding layer to the model :wink:
 
 
 
