@@ -285,15 +285,15 @@ We can clearly see that the words with a higher likelihood to be classified as F
  TODOOOOOOOOOOOOOOOOOO
 
 
-**conclusion**
-The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier doen't takes into account the number of occurences of the common words, in other words if we create two sentences one containing only one occurence of the a common word in the Fake dataset and another one containing three occurences of this word, the classifier will classify both of them with the same probability as he only detects the presence of the word and not the numnber of it's occurences.
+**But !**
+The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus if we compose a sentence containing some of the most common words of the Fake dataset we are almost sure that the model wil classify it as Fake. The MLP classifier, thus has a bias towards certain words being used in this context. This is something that the previous analysis (with sentiments) clearly doesn't have a bias towards these words because it operates at a certain level of abstraction above: only the feeling that comes out of the sentence in general is taken into account. 
 
- '''
- print("probability of classifying the sentence trump said as true is: ", clf.predict_proba(vectorizer.transform(["Trump said"]))[0][1])
+ ```bash
+ print("probability of classifying the sentence trump said as true is: ", clf.predict_proba(vectorizer.transform(["Trump said that the WAP group is the best"]))[0][1])
  
- ''' 
+ ```
  
- probability of classifying the sentence trump said as true is:  0.9902910193549522
+ probability of classifying the sentence trump said as true is: 0.8365605057544774
 
 
 
