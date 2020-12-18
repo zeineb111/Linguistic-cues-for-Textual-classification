@@ -266,7 +266,7 @@ We build a model with:
 * 1 neuron for the last layer that is going to provide the output  
 * We add early stopping and L2 regularization to avoid overfitting  
 
-The model gave an Accuracy of **0.985**, on the test set. 
+The model gave an Accuracy of **0.986**, on the test set. 
 
 We present here the precison_recall curve of our model:    
 
@@ -340,10 +340,10 @@ We build a model with:
 * 1 neuron for the last layer that is going to provide the output  
 * We add early stopping, learning rate reducer and Elastic net regularization to avoid overfitting  
 
-The model gave an accuracy of **0.996** on the test set and **0.997** for the F1, recall and precision metrics!
+The model gave an accuracy of **0.991** on the test set and **0.992** for the F1 score!
 
 <p align="center">
-     <img src="last_rnn_new.png" > 
+     <img src="last_rnn._new.png" > 
 </p>
 
 
