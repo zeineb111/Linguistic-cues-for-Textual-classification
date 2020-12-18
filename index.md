@@ -315,7 +315,7 @@ Not all texts have the same length, and since the RNN model requires inputs of t
 We implemented an RNN model using LSTM layers. LSTM (long short term memory) and because sequences are kind off long (270 times steps !) thus we need the forget gate to be able to remember far away but previously  seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes RNNs more powerful than the other models for this kind of classification. We split the data randomly into 75% of train set and 25% of test set.
 
 
-### Embeddings
+**Embeddings**
 
 Some words often come in pairs, like nice and easy or pros and cons. So the co-occurrence of words in a corpus can teach us something about its meaning.
 Sometimes, it means they are similar or sometimes it means they are opposite.
