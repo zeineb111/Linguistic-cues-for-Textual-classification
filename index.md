@@ -73,7 +73,7 @@ Not all games have the same number of seasons, and since the RNN model requires 
 
 **RNN architecture**  
 Our RNN model is built as follows:
-*  A first simple RNN layer with 10 time steps each taking a 16 dimension vector and outputting a 4 dimensions vector 
+*  A first simple RNN layer with 10 time steps each taking a 15 dimension vector and outputting a 4 dimensions vector 
 *  A sigmoid layer (equivalent to logistic regression) to output the prediction, regularized by elastic net
 *  We compile the model using the MSE loss function, the Adam optimizer and the accuracy as a metric.
 *  we define an early stopping to stop training if the accuracy metric has stopped improving.
@@ -205,7 +205,7 @@ After extracting and analyzing these features, we built an MLP model that classi
 
 **Model architecture:**  
 We build a model with:  
-* 16 neurons as input layer   
+* 15 neurons as input layer   
 * 256 neurons for the first hidden layer  
 * 64 neurons for the second hidden layer  
 * 1 neuron for the last layer that is going to provide the output  
@@ -240,7 +240,7 @@ Here we see the word clouds that we generated for all the news:
 And here we plot the top 10 n_grams of sizes 1, 2 and 3: 
 
 <p align="center">
-     <img src="common_words_all.png" > 
+     <img src="n_grams.png" > 
 </p>
 
 
@@ -280,11 +280,11 @@ Here we analyze how the MLP classifies the news.
 We inspect the subjectivity of the words having a higher likelihood of classified as Fake or True, respectively.  
 
 <p align="center">
-<img src="subjectivity_Fake.png"  width="350" height="300">                 <img src="words_MLP_Fake.png" width="450" height="300">  
+<img src="subjectivity_Fake.png"  width="350" height="300">                 <img src="words_MLP_Fake_new.png" width="450" height="300">  
 </p>
 
 <p align="center">
-<img src="Subjectivity_True.png"  width="350" height="300">                  <img src="words_MLP_True.png"  width="450" height="300" >
+<img src="Subjectivity_True.png"  width="350" height="300">                  <img src="words_MLP_True_new.png"  width="450" height="300" >
 </p>
 
 We can clearly see that the words with a higher likelihood to be classified as Fake have significantly higher subjectivity (p-value = . The model implicitly picks up on the subjectivity feature which justifies its relevance in the previous analysis. 
@@ -294,14 +294,14 @@ We can clearly see that the words with a higher likelihood to be classified as F
 **But !**  
 The MLP model learned through training words that are the most common on each dataset and uses them to classify the new news it gets. Thus, if we compose a sentence containing some of the most common words of the Fake dataset, we are almost sure that the model will classify it as Fake. The MLP classifier, thus has a bias towards certain words being used in this context. This is something that the previous analysis (with sentiments) clearly does not have a bias towards these words because it operates at a certain level of abstraction above: only the feeling that comes out of the sentence in general is taken into account.  
 
-We present here an example of a Fake statement that we fed to the model to see how it classifies it. The sentence contains one of the words the MLP uses to detect with high probability Real news, which is 'said'.
+We present here an example of a Fake statement that we fed to the model to see how it classifies it. The sentence contains two of the words the MLP uses to detect with high probability Real news, which is 'said', 'deputy'.
 
  ```bash
- print("probability of classifying the sentence as true is: ", clf.predict_proba(vectorizer.transform(["Trump said that the WAP group is the best"]))[0][1])
+print("probability of classifying the sentence as true is: ", clf.predict_proba(vectorizer.transform(["The deputy said that the WAP group is the best"]))[0][1])
  
  ```
  
- probability of classifying the sentence as true is: 0.8365605057544774  :partying_face:
+probability of classifying the sentence as true is:  0.9999736807309447  :partying_face:
 
 
 
@@ -343,7 +343,7 @@ We build a model with:
 The model gave an accuracy of **0.996** on the test set and **0.997** for the F1, recall and precision metrics!
 
 <p align="center">
-     <img src="last_rnn_big.png" > 
+     <img src="last_rnn_new.png" > 
 </p>
 
 
@@ -352,10 +352,10 @@ The model performs extremely well with very fast convergence (on average less th
 We also check if the problem has the previously mentioned bias to words highly associated to fake news. We use the same previous sentence and we feed it the classifier.
 
 ```bash
-sad_us = pad_sequences(tokenizer.texts_to_sequences(["Trump said that the WAP group is the best"]), maxlen = 270, padding='post', truncating='post')
-print("probability of classifying the sentence as true is: ", model.predict(sad_us)[0][0])
+sad_us_rnn = pad_sequences(tokenizer.texts_to_sequences(["The deputy said that the WAP group is the best"]), maxlen = 270, padding='post', truncating='post')
+print("probability of classifying the sentence as true is: ", model.predict(sad_us_rnn)[0][0])
 ```
-probability of classifying the sentence as true is:  0.0047642803 :cry:  
+probability of classifying the sentence as true is:  0.0012544087 :cry:  
 
 **So !**     
 As we can see, this model didn't fall into our trap and was able to detect that the sentence is Fake with high probability.
