@@ -255,7 +255,7 @@ After these visualizations, we developed two models to classify our data. The fi
 To approach this classification problem we first want to create a vector space for our documents.
 We opt for the TF-IDF vectorizer to map our documents to vectors who have as features the TF-IDF value of the most common set of words in the different news articles. We got 2860 words which are the words that are present in at least 1% of the documents. 
 The choice of an MLP came naturally as it's extremely performant to approximate complex multivariate mappings in higher dimensional spaces.
-Before training, we normalized the datasets using the L2 norm(???????????). We then split the data randomly into 75% of train set and 25% of test set.
+Before training, we normalized the datasets using the L2 norm. We then split the data randomly into 75% of train set and 25% of test set.
 
 **Model architecture:**  
 We build a model with:  
