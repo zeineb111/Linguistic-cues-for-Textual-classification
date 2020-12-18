@@ -341,7 +341,7 @@ We build a model with:
 * 1 neuron for the last layer that is going to provide the output  
 * We add early stopping, learning rate reducer and Elastic net regularization to avoid overfitting  
 
-The model gave an accuracy of **0.992** on the test set and **0.992** for the F1 score!
+Tadaaa!!! The model gave an accuracy of **0.992** on the test set and **0.992** for the F1 score!
 
 <p align="center">
      <img src="last_rnn_new.png" > 
