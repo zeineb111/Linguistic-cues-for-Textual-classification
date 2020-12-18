@@ -17,7 +17,7 @@ The first dataset is the Diplomacy game dataset that was provided with the paper
 * **game**: unique identifier of the game it comes from 
 * **betrayal**: a Boolean indicating if the relationship ended in betrayal or not  
 * **idx**: unique identifier of the dataset entry  
-* **people**: the countries played by the players   
+* **people**: the countries played by the players    
 
 The season entry is a dictionary with 3 entries:
 * **season**: a year that gives you a notion of order within the seasons
