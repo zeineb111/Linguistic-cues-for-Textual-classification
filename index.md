@@ -129,7 +129,7 @@ After computing the polarity of each news, we split the range [-1, 1] into 5 bin
 
 There are more positive and negative news (considering overall sentiment of the news, the polarity!) among the Fake news then among the True news. The fourth plot confirms that the Fake news are more sentimental than the True news that tend to be more neutral.
 
-**Interpretation**
+**Interpretation**  
 As mentioned above, Real news come from crawler went through Reuters’ website, thus as expected from this type of news aims for high level journalism which implies passing on news in the most authentic thus neutral way. This can be seen in the lack of sentiments and higher neutrality in Real news compared to the Fake ones as we saw in the plots. On the other hand Fake news articles were collected from unreliable websites or personal tweets thus they are more likely to be opinionated or more likely to have a populist tone of voice which is usually discouraged in news articles that should be factual and neutral. The problem of populist articles is that readers can often get distracted by the emotion of the article and skip the verification. 
 
 
@@ -150,7 +150,7 @@ We visualize here the distribution of the politeness for the two sets.
      <img src="politeness_distrib.png" > 
 </p>
 
-**Interpretation**
+**Interpretation**  
 The small difference between the politeness of the True and Fake news, can be due to the fact that Fake news like in tweets can sometimes get personal and thus less polite.
 
 ### Talkativeness 
@@ -177,8 +177,7 @@ we show here the results we got for the average subjectivity for the Fake and Re
 </p>
 
 
-**Interpretation**
-
+**Interpretation**  
 The Fake news are on average more subjective than the True news. This is explained by the fact that subjectivity variates inversely to neutrality, thus in Fake news we have given the populist tone we tend to use strong words like 'resounding' and 'astonishing'.
 
 
@@ -315,8 +314,7 @@ Not all texts have the same length, and since the RNN model requires inputs of t
 We implemented an RNN model using LSTM layers. LSTM (long short term memory) and because sequences are kind off long (270 times steps!) thus we need the forget gate to be able to remember far away but previously  seen inputs and its decisions are influenced by what it has learnt from the previous time steps, that's what makes RNNs more powerful than the other models for this kind of classification. We split the data randomly into 75% of train set and 25% of test set.
 
 
-**Embeddings**
-
+**Embeddings**  
 Some words often come in pairs, like nice and easy or pros and cons. So, the co-occurrence of words in a corpus can teach us something about its meaning.
 Sometimes, it means they are similar or sometimes it means they are opposite.
 The point from embeddings is it to create a vector such as: if two words are similar, they should have similar values in this projected vector space.   
@@ -359,7 +357,7 @@ print("probability of classifying the sentence as true is: ", model.predict(sad_
 ```
 probability of classifying the sentence as true is:  0.0047642803 :cry:  
 
-**So !**   
+**So !**     
 As we can see, this model didn't fall into our trap and was able to detect that the sentence is Fake with high probability.
 
 
