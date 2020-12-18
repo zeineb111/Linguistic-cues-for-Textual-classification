@@ -85,17 +85,13 @@ We show here the evolution of the binary accuracy and loss per epoch.
 
 
 <p align="center">
-     <img src="betrayal.png" width="400" height="260" > 
+     <img src="betrayal_new.png"  > 
 </p>
 
-The model reached an Accuracy of **0.64** on the validation set and an accuracy of **0.55** on the test set. Which is an improvement compared to the authors' results who only got 0.57 on the validation set. Thus harnessing the time evolution of the features can be helpfulto the model.
+The model reached an Accuracy of **0.64** on the validation set and an accuracy of **0.55** on the test set. Which is an improvement compared to the authors' results who only got 0.57 on the validation set. We also decided to test our model on non-betrayal games to see how well it performs at detecting the non-intention of betrayal. We preprocessed the non-betrayal dataset the same way as we did the betrayal one and then we evaluated the model on it. The model reached an Accuracy of **0.58** on this test set.  Thus harnessing the time evolution of the features can be helpfulto the model.
 However, the model has a lot of trouble converging. We don't have a lot of data, thus to reach convergence we simplify the model to the most we can, we add batch normalization, and regularize quite heavily (high l2 values, early stopping ...). Yet the problem is really complex, thus this simple model cannot fully grasp the decision boundary between betrayal or not for a given time series.
 
-
-We also decided to test our model on non-betrayal games to see how well it performs at detecting the non-intention of betrayal. We preprocessed the non-betrayal dataset the same way as we did the betrayal one and then we evaluated the model on it. The model reached an Accuracy of **0.58** on this test set. 
-
-
-**Conclusion**
+**Conclusion**  
 We want to perform more exhaustive NLP analysis with a larger dataset, to see if the NLP analysis model proposed by the authors and extended by our work generalizes well to other analogous cases.   
 
 Thus, we will now move to our new dataset to explore the effect of the linguistic cues on detecting True and Fake news.  
