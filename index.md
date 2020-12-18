@@ -317,7 +317,17 @@ We implemented an RNN model using LSTM layers. LSTM (long short term memory) and
 
 ### Embeddings
 
--- Explain embeddings
+Some words often come in pairs, like nice and easy or pros and cons. So the co-occurrence of words in a corpus can teach us something about its meaning.
+Sometimes, it means they are similar or sometimes it means they are opposite.
+The point from embeddings is it to create a vector such as: if two words are similar, they should have similar values in this projected vector space.   
+
+<p align="center">
+     <img src="embeddings.png" > 
+</p>
+
+In our case, we use GloVe, which is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase very powerful linear substructures of the word vector space.   
+More precisely, we use pre-trained word vectors from twitter with 2B tweets, 27B tokens, 1.2M vocab, uncased. 
+We opt for 50 dimension version (as it is enough for our project).
 
 To note how important the embeddings are the model initially run without them only reached 82% accuracy and 70% F1 score on the training set with very slow convergence (after 100 epochs, which was almost 1 hour of running with the google COLAB GPU). However stay tuned to see what is the effect of adding an embedding layer to the model.
 
