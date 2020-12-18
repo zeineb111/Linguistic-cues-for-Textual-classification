@@ -345,7 +345,7 @@ We build a model with:
 The model gave an accuracy of **0.996** on the test set. **0.997** also of F1, recall and precision!
 
 <p align="center">
-     <img src="last_rnn.png" > 
+     <img src="last_rnn_big.png" > 
 </p>
 
 
