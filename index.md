@@ -344,7 +344,10 @@ We build a model with:
 
 The model gave an accuracy of **0.996** on the test set. **0.997** also of F1, recall and precision!
 
--- INSERT GRAPH
+<p align="center">
+     <img src="last_rnn.png" > 
+</p>
+
 
 The model performs extremely well with very fast convergence (on average less than 10 epochs) as seen in the graph.
 
