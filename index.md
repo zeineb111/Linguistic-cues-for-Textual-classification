@@ -78,7 +78,8 @@ Our RNN model is built as follows:
 *  We compile the model using the MSE loss function, the Adam optimizer and the accuracy as a metric.
 *  we define an early stopping to stop training the accuracy metric has stopped improving.
 
-We used 90% of the data for training and 10% for testing. The model reached an Accuracy of **0.67** on the validation set and an Accuracy of **0.45** on the test set. 
+We used 90% of the data for training and 10% for testing.
+
 
 We show here the evolution of the binary accuracy and loss per epoch.
 
@@ -87,10 +88,12 @@ We show here the evolution of the binary accuracy and loss per epoch.
      <img src="betrayal.png" width="400" height="260" > 
 </p>
 
+The model reached an Accuracy of **0.64** on the validation set and an accuracy of **0.55** on the test set. Which is an improvement compared to the authors' results who only got 0.57 on the validation set. Thus harnessing the time evolution of the features can be helpfulto the model.
+However, the model has a lot of trouble converging. We don't have a lot of data, thus to reach convergence we simplify the model to the most we can, we add batch normalization, and regularize quite heavily (high l2 values, early stopping ...). Yet the problem is really complex, thus this simple model cannot fully grasp the decision boundary between betrayal or not for a given time series.
 
 
+We also decided to test our model on non-betrayal games to see how well it performs at detecting the non-intention of betrayal. We preprocessed the non-betrayal dataset the same way as we did the betrayal one and then we evaluated the model on it. The model reached an Accuracy of **0.58** on this test set. 
 
-We also decided to test our model on non-betrayal games to see how well it performs at detecting the non-intention of betrayal. We preprocessed the non-betrayal dataset the same way as we did the betrayal one and then we evaluated the model on it. The model reached an Accuracy of on this test set. 
 
 **Conclusion**
 We want to perform more exhaustive NLP analysis with a larger dataset, to see if the NLP analysis model proposed by the authors and extended by our work generalizes well to other analogous cases.   
@@ -108,8 +111,8 @@ The news datasets requires some preprocessing before  the analysis.  In  fact,  
 ***coreNLP***
 
 The goal was to reproduce the same sentiment analysis as the ones done in the paper. The authors relied on the Stanford sentiment analyzer for this task. In the first part of this task we implemented methods to compute the sentiments using the Stanford coreNLP, however these computations appeared to be very time consuming ( it will take more than 2 days for the Fake news dataset only), and since we have very limited time and also limited hardware resources, we decided to limit these calculations to a subset of the datasets to see their behavior on average.  
-The coreNLP sentiment analyzer computes the sentiment based on how words compose the meaning of longer phrases and not on words independently. We computed the sentiments of each sentence using it and then took the average of the sentences sentiments to get the sentiments of a given news. This was performed on 3000 Real and Fake news respectively. Since the news are independent, (we estimate that 3000 is quite representative sample of the entire dataset). 
-We show here average number of Sentiments with coreNLP for 3000 Fake and Real news respectively:
+The coreNLP sentiment analyzer computes the sentiments based on how words compose the meaning of longer phrases and not on words independently. We computed the sentiments of each sentence using it and then took the average of the sentences sentiments to get the sentiments of a given news. This was performed on 3000 Real and Fake news respectively. Since the news are independent, (we estimate that 3000 is quite representative sample of the entire dataset). 
+We show here the average number of Sentiments with coreNLP for 3000 Fake and Real news respectively:
 
 <p align="center">
      <img src="coreNLP.png" > 
@@ -127,10 +130,10 @@ After computing the polarity of each news, we split the range [-1, 1] into 5 bin
      <img src="polarity.png" > 
 </p>
 
-There are more positive and negative news (considering overall sentiment of the news, the polarity!) among the Fake news then among the True news. The fourth plot confirms that the Fake news are more sentimental than the True news that tend to be more neutral.
+There are more positive and negative news (considering the overall sentiment of a news, the polarity!) among the Fake news then among the True news. The fourth plot confirms that the Fake news are more sentimental than the True news that tend to be more neutral.
 
 **Interpretation**  
-As mentioned above, Real news come from crawler went through Reuters’ website, thus as expected from this type of news aims for high level journalism which implies passing on news in the most authentic thus neutral way. This can be seen in the lack of sentiments and higher neutrality in Real news compared to the Fake ones as we saw in the plots. On the other hand Fake news articles were collected from unreliable websites or personal tweets thus they are more likely to be opinionated or more likely to have a populist tone of voice which is usually discouraged in news articles that should be factual and neutral. The problem of populist articles is that readers can often get distracted by the emotion of the article and skip the verification. 
+As mentioned above, Real news come from a crawler that went through Reuters’ website, thus as expected this type of news aims for high level journalism which implies passing on news in the most authentic thus neutral way. This can be seen in the lack of sentiments and higher neutrality in Real news compared to the Fake ones as we saw in the plots. On the other hand Fake news articles were collected from unreliable websites or personal tweets thus they are more likely to be opinionated or to have a populist tone of voice which is usually discouraged in news articles that should be factual and neutral. The problem of populist articles is that readers can often get distracted by the emotion of the article and skip the verification. 
 
 
 ### Politeness  
