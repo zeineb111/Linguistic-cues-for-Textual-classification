@@ -64,7 +64,7 @@ To make our model comparable to that of the author's we try to use the same data
 The whole point of RNN is to see if the variation of the features between the seasons has an effect on our predictive power. For example, the evolution of politeness between seasons can be quite meaningful, in fact we notice from this plot of the authors the imbalance in the politeness of the players as we get closer to betrayal.
 
 <p align="center">
-     <img src="betrayal.png" > 
+     <img src="betrayal.png" width="400" height="400" > 
 </p>
 
 As a first step, we extracted the average value per season for each of the features for the victims and betrayers in betrayal games. We created a dataframe containing all the features along with a label to distinguish the two players. We normalized the dataset using the z-score.
